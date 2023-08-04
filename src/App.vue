@@ -1,17 +1,18 @@
 <script setup>
-import Index from "@/components/Index.vue";
+import Navigation from "@/components/Navigation.vue";
 </script>
 
 <template>
   <header>
     <Navigation></Navigation>
   </header>
-
   <main>
-    <Index></Index>
+    <router-view/>
   </main>
 </template>
 
 <style scoped>
+main {
 
+}
 </style>

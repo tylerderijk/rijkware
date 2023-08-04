@@ -1,6 +1,21 @@
-import './assets/main.css'
-
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
+import {createRouter, createWebHashHistory} from "vue-router";
+import Index from "@/components/Index.vue";
 
-createApp(App).mount('#app')
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes: [
+        {
+            path: '/',
+            component: Index,
+            children: [
+                { path: '', component: Index },
+                // { path: 'about', component: WhoIsThisGuy },
+                { path: '/:pathMatch(.*)*', redirect: '/' },
+            ]
+        },
+    ],
+})
+
+createApp(App).use(router).mount('#app')
