@@ -11,7 +11,16 @@ import Navigation from "@/components/Navigation.vue";
   </main>
 </template>
 
-<style scoped>
+<style>
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: mediumseagreen;
+}
+
+::selection {
+  color: white;
+  background: mediumseagreen;
+}
 main {
 
 }
