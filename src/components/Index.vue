@@ -2,7 +2,7 @@
   <section class="container">
     <div class="hero">
       <h3 class="hero_text">
-        Experienced <span class="strikethrough">student</span> developers ready for their next step.
+        Experienced <span id="student" class="strikethrough">student</span> developers ready for their next step.
       </h3>
       <div class="hero_small">
         <small>Learn more..</small>
@@ -25,6 +25,7 @@
 </script>
 <style scoped>
 section {
+  padding: 0;
 }
 
 .hero {
@@ -35,8 +36,8 @@ section {
   width: fit-content;
   border-radius: 53px;
   background: #191919;
-  box-shadow: 18px 18px 36px #151515,
-  -18px -18px 36px #1d1d1d;
+  box-shadow: 18px 18px 36px #131313,
+  -18px -18px 36px #1f1f1f;
   padding: 16px;
 }
 
@@ -55,15 +56,14 @@ section {
 }
 
 .hero_explanation {
+  padding: 5px;
+  font-size: 1em;
   opacity: .1;
-  margin-left: 8px;
 }
 
 .strikethrough {
   font-family: 'Quicksand', sans-serif;
   color: white;
-  text-decoration: underline wavy mediumseagreen;
-  text-underline-offset: 8px;
 }
 
 .svg_wrapper {
@@ -74,10 +74,37 @@ section {
   transform: translateX(8px);
 }
 
+
+#student {
+  display: inline-block;
+  position: relative;
+}
+@-webkit-keyframes border {
+  from {width: 0;}
+  to {width:100%}
+}
+
+#student:after {
+  content: '';
+  display: block;
+  margin: auto;
+  height: 6px;
+  width: 0;
+  transform: rotateZ(-2deg) translateY(-3px);
+  background: mediumseagreen;
+  -webkit-animation-name: border; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+  animation-name: border;
+  animation-duration: 1.5s;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+
 @media only screen and (max-width: 768px) {
   .hero_text {
     font-size: 3.5rem;
-  //margin-left: 10px;
   }
 
   .hero_small {
