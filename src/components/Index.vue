@@ -19,6 +19,22 @@
       </div>
     </div>
     <p class="hero_explanation">Rijkware helps student developers to find work that fits in their schedule.</p>
+    <section>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+    </section>
   </section>
 </template>
 <script>
