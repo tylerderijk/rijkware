@@ -1,7 +1,7 @@
 <template>
     <div class="rijkware_logo_wrapper">
       <router-link to="/">
-        <img src="./assets/img/RijkwareLogoTRNS%20COMPR.png" alt="Rijkware" class="rijkware_logo">
+        <img src="./assets/img/RijkwareLogoTRNS_smal_COMPr.png" alt="Rijkware" class="rijkware_logo">
       </router-link>
     </div>
     <button class="menu_button" @click="toggleNav()">
@@ -66,16 +66,16 @@ main {
 }
 
 .move-main {
-  transform: translateX(-30vw);
+  transform: translateX(-20vw);
 }
 
 .rijkware_logo {
-  height: 20rem;
+  padding: 20px;
+  height: 200px;
 }
 
 .rijkware_logo_wrapper {
   display: flex;
-  align-items: end;
   justify-content: center;
 }
 
@@ -147,7 +147,18 @@ h1 {
   background: blue;
 }
 
-main {
-
+@media only screen and (max-width: 768px) {
+  .rijkware_logo {
+    height: 150px;
+  }
+  .rijkware_logo_wrapper {
+    justify-content: start;
+  }
+    .menu_button {
+    padding: 0.2rem;
+  }
+    nav {
+    width: 100vw;
+  }
 }
 </style>

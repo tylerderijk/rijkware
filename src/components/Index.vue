@@ -162,6 +162,10 @@ section {
 
 
 @media only screen and (max-width: 768px) {
+  .hero_explanation {
+    margin-left: 10px;
+    font-size: 0.6em;
+  }
   .hero_text {
     font-size: 3.5rem;
   }
