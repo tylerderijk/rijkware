@@ -7,7 +7,7 @@
       <div class="hero_small">
         <small>Learn more..</small>
         <div class="svg_wrapper">
-          <svg width="32" height="32" fill="mediumseagreen" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg width="32" height="32" fill="gray" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
                   d="M12.352 18.848a1.2 1.2 0 0 1 0-1.696L17.503 12l-5.151-5.152a1.2 1.2 0 1 1 1.696-1.696l6 6a1.2 1.2 0 0 1 0 1.696l-6 6a1.2 1.2 0 0 1-1.696 0Z"
                   clip-rule="evenodd"></path>
@@ -20,20 +20,7 @@
     </div>
     <p class="hero_explanation">Rijkware helps student developers to find work that fits in their schedule.</p>
     <section>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
-      <p>Lorum ipsum ljasgfgbasdjfgbasdhbfljnsdfbkdhbflasnbkfbadfkak;fnakfnksnf</p>
+
     </section>
   </section>
 </template>
@@ -97,24 +84,25 @@ export default {
     ;
 
     // Wait for five seconds before running the code
-    setTimeout(() => {
-      let letters = document.getElementsByClassName('letter');
-      console.log(letters);
-
-      for (let i = 0; i < letters.length; i++) {
-        letters[i].addEventListener('mouseover', () => {
-          letters[i].style['font-family'] = ['Playfair Display', 'sans-serif'];
-          letters[i].style.color = 'mediumseagreen';
-          setTimeout(() => {
-            letters[i].style['font-family'] = ['Lexend', 'sans-serif'];
-          }, 3000);
-
-          });
-        letters[i].addEventListener('mouseout', () => {
-          letters[i].style.color = 'white';
-        });
-      }
-    }, 100);
+    // setTimeout(() => {
+    //   let letters = document.getElementsByClassName('letter');
+    //   console.log(letters);
+    //
+    //   for (let i = 0; i < letters.length; i++) {
+    //     letters[i].addEventListener('mouseover', () => {
+    //       // letters[i].style['font-family'] = ['Playfair Display', 'sans-serif'];
+    //
+    //       letters[i].style.color = 'darkblue';
+    //       setTimeout(() => {
+    //         // letters[i].style['font-family'] = ['Lexend', 'sans-serif'];
+    //       }, 3000);
+    //
+    //       });
+    //     letters[i].addEventListener('mouseout', () => {
+    //       letters[i].style.color = 'white';
+    //     });
+    //   }
+    // }, 100);
 
   },
   methods() {
@@ -125,38 +113,32 @@ export default {
 section {
   padding: 0;
 }
-
-.letter:hover, .letter:active {
-  color: red !important;
-  font-family: 'Playfair Display', sans-serif !important;
-}
-
 .hero {
-  margin-top: 15vh;
   display: flex;
   flex-direction: column;
   align-items: end;
   width: fit-content;
-  border-radius: 53px;
-  background: #191919;
-  box-shadow: 18px 18px 36px #131313,
-  -18px -18px 36px #1f1f1f;
+  border-radius: 50px;
+  background: #70B9D9;
+  box-shadow:  20px 20px 60px #5f9db8,
+  -20px -20px 60px #81d5fa;
   padding: 16px;
   transition: ease-in-out 0.2s;
 }
 
 .hero:hover {
-  box-shadow: 9px 9px 18px #131313,
-  -9px -9px 18px #1f1f1f;
+  box-shadow: 9px 9px 18px rgba(245, 245, 245, 0.01),
+  -9px -9px 18px rgba(255, 255, 255, 0.1);
 }
 
 .hero_text {
+  margin-left: 10px;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 5rem;
-  font-family: 'Playfair Display', sans-serif;
 }
 
 .hero_small {
-  opacity: 0.3;
+  opacity: 0.6;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -167,7 +149,7 @@ section {
 .hero_explanation {
   padding: 5px;
   font-size: 1em;
-  opacity: .1;
+  opacity: .5;
 }
 
 .svg_wrapper {
