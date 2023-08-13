@@ -1,26 +1,33 @@
 <template>
   <section class="container">
-    <div class="hero">
-      <h3 class="hero_text ml11">
-        <span class="letters">Experienced student developers ready for their next step</span>
-      </h3>
-      <div class="hero_small">
-        <small>Learn more..</small>
-        <div class="svg_wrapper">
-          <svg width="32" height="32" fill="gray" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M12.352 18.848a1.2 1.2 0 0 1 0-1.696L17.503 12l-5.151-5.152a1.2 1.2 0 1 1 1.696-1.696l6 6a1.2 1.2 0 0 1 0 1.696l-6 6a1.2 1.2 0 0 1-1.696 0Z"
-                  clip-rule="evenodd"></path>
-            <path fill-rule="evenodd"
-                  d="M5.152 18.848a1.2 1.2 0 0 1 0-1.696L10.303 12 5.152 6.848a1.2 1.2 0 0 1 1.696-1.696l6 6a1.2 1.2 0 0 1 0 1.696l-6 6a1.2 1.2 0 0 1-1.696 0Z"
-                  clip-rule="evenodd"></path>
-          </svg>
-        </div>
+    <h3 class="hero_text ml11">
+      <span class="letters">Experienced Student Developers Ready to Take the Next Step</span>
+    </h3>
+    <p class="hero_text_small">
+      Talented student developers aspiring to acquire practical experience in the realm of software development.
+    </p>
+    <section class="container steps-container">
+      <div class="neo-container">
+        <h1>Who</h1>
+        <p>
+          During the initial two years, students are taught to plan, design, and develop
+          applications of varying scales.
+        </p>
       </div>
-    </div>
-    <p class="hero_explanation">Rijkware helps student developers to find work that fits in their schedule.</p>
-    <section>
-
+      <div class="neo-container">
+        <h1>Why</h1>
+        <p>
+          The current job landscape predominantly offers full-time positions, posing a challenge for students to amass
+          hands-on experience. We want to change that.
+        </p>
+      </div>
+      <div class="neo-container">
+        <h1>How</h1>
+        <p>
+          Discovering projects that provide flexible hours, allowing students to seamlessly integrate them into their
+          academic schedules while gaining invaluable field experience.
+        </p>
+      </div>
     </section>
   </section>
 </template>
@@ -73,37 +80,7 @@ export default {
           offset: '-=775',
           delay: (el, i) => 34 * (i + 1)
         })
-        .add({
-          targets: '.anime_student',
-          opacity: [0, 100],
-          easing: "easeOutExpo",
-          duration: 600,
-          delay: 5000,
-          loop: true
-        })
     ;
-
-    // Wait for five seconds before running the code
-    // setTimeout(() => {
-    //   let letters = document.getElementsByClassName('letter');
-    //   console.log(letters);
-    //
-    //   for (let i = 0; i < letters.length; i++) {
-    //     letters[i].addEventListener('mouseover', () => {
-    //       // letters[i].style['font-family'] = ['Playfair Display', 'sans-serif'];
-    //
-    //       letters[i].style.color = 'darkblue';
-    //       setTimeout(() => {
-    //         // letters[i].style['font-family'] = ['Lexend', 'sans-serif'];
-    //       }, 3000);
-    //
-    //       });
-    //     letters[i].addEventListener('mouseout', () => {
-    //       letters[i].style.color = 'white';
-    //     });
-    //   }
-    // }, 100);
-
   },
   methods() {
   }
@@ -113,64 +90,77 @@ export default {
 section {
   padding: 0;
 }
-.hero {
+
+.neo-container {
+  margin: 20px 5px 5px 5px;
   display: flex;
   flex-direction: column;
-  align-items: end;
-  width: fit-content;
-  border-radius: 50px;
-  background: #70B9D9;
-  box-shadow:  20px 20px 60px #5f9db8,
-  -20px -20px 60px #81d5fa;
+  width: 100%;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.25);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+//background: #64a9c7; box-shadow: 20px 20px 60px #5f9db8, -20 px -20px 60px #81d5fa;
   padding: 16px;
   transition: ease-in-out 0.2s;
 }
 
-.hero:hover {
-  box-shadow: 9px 9px 18px rgba(245, 245, 245, 0.01),
-  -9px -9px 18px rgba(255, 255, 255, 0.1);
+.neo-container:hover {
+  box-shadow: 14px 14px 48px rgba(245, 245, 245, 0.01),
+  -12px -12px 48px rgba(255, 255, 255, 0.1);
+}
+
+.neo-container h1 {
+  font-size: 3rem;
+  color: #FFFFFF;
+}
+
+.neo-container p {
+  font-size: 2rem;
 }
 
 .hero_text {
-  margin-left: 10px;
+  margin: 40px 0 20px 20px;
   font-family: 'Bricolage Grotesque', sans-serif;
   font-size: 5rem;
 }
 
-.hero_small {
+.hero_text_small {
   opacity: 0.6;
-  cursor: pointer;
+  font-size: 2rem;
+  margin: 10px 20px 20px 20px;
+}
+
+.steps-container {
+  gap: 3%;
+  margin-top: 200px;
   display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-family: 'Lexend', sans-serif;
-}
-
-.hero_explanation {
-  padding: 5px;
-  font-size: 1em;
-  opacity: .5;
-}
-
-.svg_wrapper {
-  transition: ease-in-out 0.3s;
-}
-
-.hero_small:hover .svg_wrapper {
-  transform: translateX(8px);
+  justify-content: space-between;
 }
 
 
 @media only screen and (max-width: 768px) {
-  .hero_explanation {
-    margin-left: 10px;
-    font-size: 0.6em;
-  }
   .hero_text {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 
-  .hero_small {
+  .hero_text_small {
+    font-size: 1rem;
+  }
+
+  .steps-container {
+    flex-direction: column;
+  }
+
+  .neo-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .steps-container {
+    margin-top: 100px;
+  }
+
+  .neo-container p {
     font-size: 1rem;
   }
 }

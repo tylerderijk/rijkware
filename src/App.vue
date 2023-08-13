@@ -5,7 +5,7 @@
       </router-link>
     </div>
     <button class="menu_button" @click="toggleNav()">
-      <svg width="64" height="64" fill="black" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <svg width="64" height="64" fill="#A7C3CD" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M6 7h5a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2Zm7 8h5a1 1 0 0 1 0 2h-5a1 1 0 0 1 0-2Zm-7-4h12a1 1 0 0 1 0 2H6a1 1 0 0 1 0-2Z"></path>
       </svg>
     </button>
@@ -54,7 +54,6 @@ export default {
   methods: {
     toggleNav() {
       this.showNav = !this.showNav;
-      // document.body.dataset.nav = document.body.dataset.nav === "true" ? "false" : "true";
     }
   }
 }
@@ -101,7 +100,18 @@ nav {
 .nav-item {
   z-index: 101;
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 3rem;
+  font-size: 6.5rem;
+  transition: ease-in-out all .2s;
+}
+
+.nav-item:hover {
+  text-decoration: underline;
+  color: #b2d9e7;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: #0d8bb9;
 }
 
 nav.show-nav {
@@ -109,11 +119,10 @@ nav.show-nav {
 }
 
 .menu_button {
-  color: gray;
   font-size: 1.5rem;
   font-family: 'Bricolage Grotesque', sans-serif;
   position: absolute;
-  top: 0;
+  top: 10px;
   right: 0;
   z-index: 100;
   padding: 0.5rem;
@@ -123,13 +132,6 @@ nav.show-nav {
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   border-radius: .7rem;
-}
-
-h1 {
-  font-family: 'Quicksand', sans-serif;
-  color: #A7C5CF;
-  font-size: 4rem;
-  opacity: 0.3;
 }
 
 .margin-horizontal {
@@ -155,10 +157,14 @@ h1 {
     justify-content: start;
   }
     .menu_button {
-    padding: 0.2rem;
+    padding: 0.1rem;
+      opacity: 0.7;
   }
-    nav {
+  nav {
     width: 100vw;
   }
-}
+  .nav-item {
+    font-size: 3rem;
+  }
+  }
 </style>
