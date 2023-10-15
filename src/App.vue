@@ -1,43 +1,10 @@
 <template>
-  <div class="rijkware_logo_wrapper">
-<!--    <router-link to="/">-->
-<!--      <img src="./assets/img/RijkwareLogoTRNS_smal_COMPr.png" alt="Rijkware" class="rijkware_logo">-->
-<!--    </router-link>-->
-    <div class="menu-holder" @click="toggleNav()">
-      <svg viewBox="0 0 175 80" width="40" height="40">
-        <rect width="120" height="15" fill="#f0f0f0" rx="10"></rect>
-        <rect y="30" width="80" height="15" fill="#f0f0f0" rx="10"></rect>
-        <rect y="60" width="140" height="15" fill="#f0f0f0" rx="10"></rect>
-        <rect y="90" width="130" height="15" fill="#f0f0f0" rx="10"></rect>
-      </svg>
-    </div>
-  </div>
-<!--  <button class="menu_button" >-->
-
-<!--    Menu-->
-<!--    <svg width="64" height="64" fill="#A7C3CD" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
-<!--      <path-->
-<!--          d="M6 7h5a1 1 0 1 1 0 2H6a1 1 0 0 1 0-2Zm7 8h5a1 1 0 0 1 0 2h-5a1 1 0 0 1 0-2Zm-7-4h12a1 1 0 0 1 0 2H6a1 1 0 0 1 0-2Z"></path>-->
-<!--    </svg>-->
-<!--  </button>-->
-  <nav :class="{ 'show-nav': showNav }">
-    <div class="margin-horizontal">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/">Home</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/about">About</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/contact">Contact</router-link>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <main :data-nav="showNav" :class="{ 'move-main': showNav }">
+  <router-link to="/" class="rijkware_logo_wrapper">
+    <img src="./assets/img/RijkwareLogo20231014.png" alt="Rijkware" class="rijkware_logo">
+  </router-link>
+  <main>
     <router-view/>
-<div class="cloud-holder"></div>
+    <div class="cloud-holder"></div>
     <img src="./assets/img/clouds/cloud-one.png" alt="clouds" class="cloud cloud-one">
     <img src="./assets/img/clouds/cloud-two.png" alt="clouds" class="cloud cloud-two">
     <img src="./assets/img/clouds/cloud-three.png" alt="clouds" class="cloud cloud-three">
@@ -143,25 +110,18 @@ export default {
     });
 
   },
-  methods: {
-    toggleNav() {
-      this.showNav = !this.showNav;
-    }
-  }
+  methods: {}
 }
 </script>
 <style>
 router-view {
   z-index: 99999;
 }
+
 main {
   z-index: 2;
   transition: transform 600ms cubic-bezier(.13, .53, .38, .97);
   overflow: hidden;
-}
-
-.move-main {
-  transform: translateX(-20vw);
 }
 
 .cloud {
@@ -206,32 +166,27 @@ main {
 }
 
 @keyframes cloud-movement {
- 0%{
+  0% {
     transform: translateY(500%) translateX(-40%);
- }
+  }
   100% {
     transform: translateY(-500%) translateX(40%);
   }
 }
 
 
-
-
-
-
-
 .rijkware_logo {
-  opacity: 0.8;
+  opacity: 0.5;
   padding: 20px;
-  height: 120px;
+  height: 90px;
   position: absolute;
 }
 
 .rijkware_logo_wrapper {
   background-color: #001157;
-
-  //display: flex;
-  //justify-content: center;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
 nav {
@@ -275,16 +230,8 @@ nav.show-nav {
 }
 
 .menu_button {
-  //font-size: 1.5rem;
-  //font-family: 'Bricolage Grotesque', sans-serif;
-  text-transform: uppercase;
-  //position: absolute;
-  //top: 10px;
-  //right: 10px;
-  //z-index: 100;
-  //padding: 1rem;
-  //background-color: rgba(255, 255, 255, 0);
-  //border: 1px solid rgba(255, 255, 255, 0);
+//font-size: 1.5rem; //font-family: 'Bricolage Grotesque', sans-serif; text-transform: uppercase;
+//position: absolute; //top: 10px; //right: 10px; //z-index: 100; //padding: 1rem; //background-color: rgba(255, 255, 255, 0); //border: 1px solid rgba(255, 255, 255, 0);
 
 }
 
@@ -304,7 +251,7 @@ nav.show-nav {
 }
 
 .menu-holder {
-  display: none;
+  display: block;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -342,8 +289,6 @@ nav.show-nav {
     font-size: 3rem;
   }
 }
-
-
 
 
 </style>

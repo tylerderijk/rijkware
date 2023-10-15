@@ -1,6 +1,5 @@
 <template>
   <div class="main-container">
-
     <div class="hero-container">
       <h1 class="hero-text-large">
         <span class="hero-letters">Experienced Student Developers Ready to Take the Next Step</span>
@@ -8,32 +7,24 @@
     </div>
     <div class="hero-container-form">
       <form class="form">
-        <p class="title">
-          Hire a Student Developer
-        </p>
+        <p class="title">Hire a Student Developer</p>
         <p class="message">Let's get in touch to understand your needs. For free.</p>
         <div class="flex">
           <label>
-            <input v-model="firstName" maxlength="30" required placeholder type="text" class="input" />
-            <span>First Name</span>
+            <input v-model="firstName" maxlength="30" required placeholder="First Name" type="text" class="input"/>
           </label>
-
           <label>
-            <input v-model="lastName" maxlength="50" required placeholder type="text" class="input" />
-            <span>Last Name</span>
+            <input v-model="lastName" maxlength="50" required placeholder="Last Name" type="text" class="input"/>
           </label>
         </div>
-
         <label>
-          <input v-model="email" maxlength="50" required placeholder type="email" class="input" />
-          <span>Email</span>
+          <input v-model="email" maxlength="50" required placeholder="Email" type="email" class="input"/>
         </label>
-
         <label>
-          <textarea v-model="message" maxlength="200" required placeholder class="input message-input"></textarea>
-          <span>Message</span>
+          <textarea v-model="message" maxlength="200" required placeholder="Message"
+                    class="input message-input"></textarea>
         </label>
-        <small class="message-input-count">{{ characterCount }}/200</small>
+        <small class="message-input-count">{{ this.message.length }}/200</small>
         <button class="submit">
           Submit
           <svg
@@ -43,37 +34,41 @@
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-                fill-rule="evenodd"
-                d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
-                clip-rule="evenodd"
-            ></path>
+            <!-- Your SVG path -->
           </svg>
         </button>
         <p class="visit-contact-page">
           Visit our <a>contact page</a> for other options.
         </p>
       </form>
-<!--      <img class="hero-image" src="../assets/img/LaptopRijwkare2.png" alt="" />-->
     </div>
+    <h2 class="title-hire-student-developer">
+      <i class="fa-solid fa-angles-down"></i>
+      Scroll down to find out why.
+      <i class="fa-solid fa-angles-down"></i>
+    </h2>
+
   </div>
-    <div class="brand-section">
-      <div class="brand-vignette-left"></div>
-      <div class="brand-vignette-right"></div>
-      <div class="brand-section-icons">
-        <small>Student Developers Experienced with:</small>
-        <div>
-          <div class="slider">
-            <div class="slide-track">
-              <div class="slide" v-for="(iconClass, index) in brandIcons" :key="index">
-                <i class="fa-brands" :class="iconClass"></i>
-              </div>
-            </div>
+  <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="royalblue" fill-opacity="1"
+          d="M0,224L26.7,208C53.3,192,107,160,160,122.7C213.3,85,267,43,320,58.7C373.3,75,427,149,480,160C533.3,171,587,117,640,128C693.3,139,747,213,800,213.3C853.3,213,907,139,960,117.3C1013.3,96,1067,128,1120,149.3C1173.3,171,1227,181,1280,202.7C1333.3,224,1387,256,1413,272L1440,288L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"></path>
+  </svg>
+
+  <div class="brand-section">
+    <div class="brand-vignette-left"></div>
+    <div class="brand-vignette-right"></div>
+    <div class="brand-section-icons">
+      <small>Student Developers Experienced with:</small>
+      <div>
+        <div class="slider">
+          <div class="slide" v-for="(iconClass, index) in brandIcons" :key="index">
+            <i class="fa-brands" :class="iconClass"></i>
           </div>
         </div>
-        <small>and <strong>many</strong> more!</small>
       </div>
+      <small>and <strong>many</strong> more!</small>
     </div>
+  </div>
 </template>
 
 <script>
@@ -107,7 +102,8 @@ export default {
     };
   },
   watch: {
-    '$route'() {},
+    '$route'() {
+    },
   },
   created() {
     this.startBrandAnimation();
@@ -116,7 +112,6 @@ export default {
     const textWrapper = document.querySelector('.hero-text-large .hero-letters');
     textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
 
-    // Animation for the entire sentence
     anime.timeline()
         .add({
           targets: '.hero-text-large .line',
@@ -140,37 +135,52 @@ export default {
           delay: (el, i) => 34 * (i + 1)
         });
   },
-  computed: {
-    characterCount() {
-      return this.message.split('').length
-    },
-  },
+  computed: {},
   methods: {
     startBrandAnimation() {
-      Queue
+      setInterval(() => {
+        const firstElement = this.brandIcons.shift();
+        this.brandIcons.push(firstElement);
+      }, 3000);
     }
   }
 };
 </script>
-
 <style scoped>
+.title-hire-student-developer {
+  z-index: 10;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 40px;
+  background-color: royalblue;
+}
+
+.hero-waves {
+  z-index: 2;
+  position: absolute;
+  bottom: 0;
+//-webkit-filter: drop-shadow(-3px -3px 0 whitesmoke); //filter: drop-shadow(-3px -3px 0 whitesmoke);
+}
+
+
 .brand-section {
-  //margin-top: 80px;
-  width: 100vw;
-  height: fit-content;
-  background-color: black;
-  display: flex;
+//margin-top: 80px; width: 100vw; height: fit-content; background-color: black; display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: relative;
-  //margin-top: 20vh;
+  background-color: royalblue;
+//margin-top: 20vh;
 }
 
 .brand-section small {
   font-family: 'Quicksand', sans-serif;
   opacity: 0.8;
-  margin: 10px 0;  color: white;
+  margin: 10px 0;
+  color: white;
 
 }
 
@@ -181,7 +191,7 @@ export default {
   left: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(to right, #000d1a, rgba(34, 106, 187, 0.2), rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to right, royalblue, rgba(65, 105, 225, 0.39), rgba(0, 0, 0, 0) 100%);
   z-index: 80;
 }
 
@@ -192,7 +202,7 @@ export default {
   right: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(to left, #000d1a, rgba(34, 106, 187, 0.2), rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to left, royalblue, rgba(65, 105, 225, 0.39), rgba(0, 0, 0, 0) 100%);
   z-index: 80;
 }
 
@@ -206,11 +216,13 @@ export default {
 .fa-brands {
   padding-top: 30px;
   font-size: 80px;
-  white-space: nowrap;
+  margin-right: 20px;
 }
 
-.slider {  text-align: center;
-
+.slider {
+  text-align: center;
+  display: flex;
+  justify-content: center;
   height: 150px;
   margin: auto;
   overflow: hidden;
@@ -238,8 +250,8 @@ export default {
   top: 0;
 }
 
-.slider .slide-track {
-  animation: scroll 40s linear infinite;
+.slider {
+  animation: fade 3s ease-in-out infinite;
   display: flex;
   width: calc(250px * 14);
 }
@@ -311,7 +323,7 @@ button:hover p::before {
 
 .form {
   border: rgba(0, 0, 0, 0.05) 8px solid;
-
+  z-index: 3;
   font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
@@ -364,10 +376,6 @@ button:hover p::before {
   animation: pulse 1s linear infinite;
 }
 
-.title-icon {
-  margin-left: 7px;
-  margin-top: 2px;
-}
 
 .message, .visit-contact-page {
   color: rgba(88, 87, 87, 0.822);
@@ -453,14 +461,8 @@ button:hover p::before {
   color: gray;
 }
 
-.hero-image {
-  height: 350px;
-  //z-index: 1;
-  margin: 50px 50px 50px -150px;
-}
-
 .hero-container-form {
-  z-index: 1;
+  z-index: 3;
   display: flex;
 }
 
@@ -476,26 +478,41 @@ button:hover p::before {
   }
 }
 
-@keyframes scroll {
+@keyframes fade {
   0% {
     opacity: 0;
-    transform: translateX(0);
   }
-  5% {
+  25% {
     opacity: 1;
   }
-  95% {
+  75% {
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: translateX(calc(-250px * 7));
   }
 }
 
 @media only screen and (max-width: 768px) {
+  .hero-waves {
+    width: 200vw;
+    margin-left: -120px;
+  }
+
   .hero-container {
     font-size: 2.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .form {
+    width: 95vw;
+  }
+
+  .hero-letters {
+    font-size: 2rem;
   }
 
   .step-container h1 {
@@ -507,7 +524,7 @@ button:hover p::before {
   }
 
   .slider .slide-track {
-    animation: scroll 20s linear infinite;
+    animation: fade 20s linear infinite;
     width: calc(150px * 14);
   }
 }
