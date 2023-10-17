@@ -7,8 +7,7 @@
     </div>
     <div class="hero-container-form">
       <form class="form">
-        <p class="title">Hire a Student Developer</p>
-        <p class="message">Let's get in touch to understand your needs. For free.</p>
+        <p class="title">Schedule a free Consultation</p>
         <div class="flex">
           <label>
             <input v-model="firstName" maxlength="30" required placeholder="First Name" type="text" class="input"/>
@@ -26,49 +25,162 @@
         </label>
         <small class="message-input-count">{{ this.message.length }}/200</small>
         <button class="submit">
-          Submit
-          <svg
-              width="15"
-              height="15"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-          >
-            <!-- Your SVG path -->
-          </svg>
+          Send
         </button>
-        <p class="visit-contact-page">
-          Visit our <a>contact page</a> for other options.
-        </p>
+        <!--        <p class="visit-contact-page">-->
+        <!--          Visit our <a>contact page</a> for other options.-->
+        <!--        </p>-->
       </form>
     </div>
     <h2 class="title-hire-student-developer">
-      <i class="fa-solid fa-angles-down"></i>
-      Scroll down to find out why.
-      <i class="fa-solid fa-angles-down"></i>
+      <i class="fa-solid fa-angles-down" style="color: whitesmoke;"></i>
+      Why hire a Student Developer?
+      <i class="fa-solid fa-angles-down" style="color: whitesmoke;"></i>
     </h2>
-
   </div>
   <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
     <path fill="royalblue" fill-opacity="1"
           d="M0,224L26.7,208C53.3,192,107,160,160,122.7C213.3,85,267,43,320,58.7C373.3,75,427,149,480,160C533.3,171,587,117,640,128C693.3,139,747,213,800,213.3C853.3,213,907,139,960,117.3C1013.3,96,1067,128,1120,149.3C1173.3,171,1227,181,1280,202.7C1333.3,224,1387,256,1413,272L1440,288L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"></path>
   </svg>
-
-  <div class="brand-section">
-    <div class="brand-vignette-left"></div>
-    <div class="brand-vignette-right"></div>
-    <div class="brand-section-icons">
-      <small>Student Developers Experienced with:</small>
-      <div>
-        <div class="slider">
-          <div class="slide" v-for="(iconClass, index) in brandIcons" :key="index">
-            <i class="fa-brands" :class="iconClass"></i>
-          </div>
-        </div>
-      </div>
-      <small>and <strong>many</strong> more!</small>
-    </div>
+  <div class="blob">
+    <!-- This SVG is from https://codepen.io/Ali_Farooq_/pen/gKOJqx -->
+    <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 310 350">
+      <path
+          d="M156.4,339.5c31.8-2.5,59.4-26.8,80.2-48.5c28.3-29.5,40.5-47,56.1-85.1c14-34.3,20.7-75.6,2.3-111  c-18.1-34.8-55.7-58-90.4-72.3c-11.7-4.8-24.1-8.8-36.8-11.5l-0.9-0.9l-0.6,0.6c-27.7-5.8-56.6-6-82.4,3c-38.8,13.6-64,48.8-66.8,90.3c-3,43.9,17.8,88.3,33.7,128.8c5.3,13.5,10.4,27.1,14.9,40.9C77.5,309.9,111,343,156.4,339.5z"/>
+    </svg>
   </div>
+
+
+  <section class="section-why">
+      <div class="holder-why">
+        <h3 class="title-why">7 Reasons Why You Should Choose Rijkware.</h3>
+        <p class="text-why">
+          Rijkware Student Developers are the smart choice for your projects. They are well-prepared, cost-effective,
+          and dedicated to your success:
+
+          <ul>
+            <li><span class="li-why">Cost-Effective</span>:<br> High-quality work at a budget-friendly price.</li>
+            <li><span class="li-why">Clear Contracts</span>:<br> Transparent agreements before work begins.</li>
+            <li><span class="li-why">Experience Growth</span>:<br> Support students in gaining real-world expertise.
+            </li>
+            <li><span class="li-why">Flexibility</span>:<br> Choose on-site or remote collaboration.</li>
+            <li><span class="li-why">Regular Updates</span>:<br> Stay informed with progress reports.</li>
+            <li><span class="li-why">Cutting-Edge Skills</span>:<br> Proficiency in the latest technologies.</li>
+            <li><span class="li-why">Payment Options</span>:<br> Pay weekly, monthly, or upon project completion. Choose
+              hourly rates or project-based billing.</li>
+          </ul>
+        </p>
+      </div>
+    <div class="image-why-holder">
+      <img class="image-why" src="../assets/img/iphone14prorijkware.png" alt="">
+    </div>
+  </section>
+<!--  <div class="brand-holder">-->
+<!--    <div class="brand-section">-->
+<!--      <div class="brand-vignette-left"></div>-->
+<!--      <div class="brand-vignette-right"></div>-->
+<!--      <div class="brand-section-icons">-->
+<!--        <div class="section-title">-->
+<!--          <h2>Student Developers Experienced with:</h2>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <div class="slider">-->
+<!--            <div class="slide" v-for="(iconClass, index) in brandIcons" :key="index">-->
+<!--              <i class="fa-brands" :class="iconClass"></i>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <small>and <strong>many</strong> more!</small>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <div class="section-title">
+    <h2>Frequently Asked Questions</h2>
+  </div>
+  <section class="section-qna">
+    <details class="holder-qna">
+      <summary>
+        <h3 class="title-why">
+          <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                  d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
+                  clip-rule="evenodd"></path>
+          </svg>
+          What does Rijkware do?
+        </h3>
+      </summary>
+      <div class="text-why">
+        <p>
+          Rijkware is a platform connecting businesses or individuals with talented student developers. We facilitate
+          collaborations between companies and students studying in IT-related fields. Enabling them to gain real-world
+          experience while providing businesses with cost-effective solutions to their software needs.
+        </p>
+      </div>
+    </details>
+  </section>
+  <section class="section-qna">
+    <details class="holder-qna">
+      <summary>
+        <h3 class="title-why">
+          <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                  d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
+                  clip-rule="evenodd"></path>
+          </svg>
+          What kind of projects can student developers work on?
+        </h3>
+      </summary>
+      <div class="text-why">
+        <p>
+          Our student developers are proficient in a wide range of technologies and can work on various projects,
+          including web development, mobile app development, data analysis, and more. Students are also capable of
+          learning new skills to fit your needs. <br><br>
+          <strong>Rijkware prioritizes students academic success. Therefore, we do not accept projects that require
+            students to
+            work full-time (32-40 hours) unless they provide a flexible schedule.</strong>
+        </p>
+      </div>
+    </details>
+  </section>
+  <section class="section-qna">
+    <details class="holder-qna">
+      <summary>
+        <h3 class="title-why">
+          <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                  d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
+                  clip-rule="evenodd"></path>
+          </svg>
+          Do I need to provide guidance to the student developers?
+        </h3>
+      </summary>
+      <div class="text-why">
+        <p>
+          Why pay more when the result is the same?
+        </p>
+      </div>
+    </details>
+  </section>
+  <section class="section-qna">
+    <details class="holder-qna">
+      <summary>
+        <h3 class="title-why">
+          <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                  d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
+                  clip-rule="evenodd"></path>
+          </svg>
+          How do I get started with Rijkware?
+        </h3>
+      </summary>
+      <div class="text-why">
+        <p>
+          Why pay more when the result is the same?
+        </p>
+      </div>
+    </details>
+  </section>
 </template>
 
 <script>
@@ -147,6 +259,114 @@ export default {
 };
 </script>
 <style scoped>
+details[open] .title-why svg {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+
+.section-qna {
+  color: #191919;
+  margin: 36px 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title {
+  margin-top: 80px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.section-title h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  color: #191919;
+}
+
+.holder-qna {
+  width: 95%;
+  max-width: 1250px;
+  padding: 20px;
+  background-color: #e8e7ff;
+  border-radius: 36px;
+}
+
+.section-why {
+  margin: 36px 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.holder-why {
+  height: 700px;
+  display: flex;
+  //align-items: center;
+  flex-direction: column;
+  width: 700px;
+  max-width: 1250px;
+  //gap: 20px;
+  padding: 20px;
+  background-color: #cedbff;
+  border-radius: 36px;
+}
+
+.image-why-holder {
+  height: 700px;
+  margin: 2rem;
+  background-color: #cedbff;
+  border-radius: 36px;
+  overflow: hidden;
+  //background-image: url("../assets/img/iphone14prorijkware.png");
+}
+
+.image-why {
+  width: 500px;
+  padding: 20px;
+  -webkit-filter: drop-shadow(0px 22px 22px rgba(34, 34, 34, 0.62));
+  filter: drop-shadow(0px 22px 22px rgba(34, 34, 34, 0.62));
+}
+
+.title-why {
+  font: bold 2rem 'Quicksand', sans-serif;
+  color: royalblue;
+}
+
+.text-why {
+  font-family: Lexend, sans-serif;
+  color: #191919;
+}
+
+.li-why {
+  font-family: 'Quicksand', serif;
+  font-weight: bold;
+  color: royalblue;
+  font-size: 1.2rem;
+}
+
+li {
+  padding: 6px 0;
+  list-style-type: upper-roman;
+}
+
+li::marker {
+  font-weight: bold;
+}
+
+
 .title-hire-student-developer {
   z-index: 10;
   font-family: 'Quicksand', sans-serif;
@@ -165,27 +385,29 @@ export default {
 //-webkit-filter: drop-shadow(-3px -3px 0 whitesmoke); //filter: drop-shadow(-3px -3px 0 whitesmoke);
 }
 
-
-.brand-section {
-//margin-top: 80px; width: 100vw; height: fit-content; background-color: black; display: flex;
+.brand-holder {
+  width: 100vw;
+  display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  position: relative;
-  background-color: royalblue;
-//margin-top: 20vh;
+}
+
+.brand-section {
 }
 
 .brand-section small {
   font-family: 'Quicksand', sans-serif;
   opacity: 0.8;
   margin: 10px 0;
-  color: white;
+  color: #191919;
+}
 
+.brand-section small strong {
+  color: #191919;
 }
 
 /* Apply vignette effect to the left */
-.brand-vignette-left {
+.brand-vignette-leftx {
   position: absolute;
   top: 0;
   left: 0;
@@ -196,7 +418,7 @@ export default {
 }
 
 /* Apply vignette effect to the right */
-.brand-vignette-right {
+.brand-vignette-rightx {
   position: absolute;
   top: 0;
   right: 0;
@@ -214,8 +436,10 @@ export default {
 }
 
 .fa-brands {
+  //background-image: url("../assets/img/RijkwareLogo20231014.png");
   padding-top: 30px;
   font-size: 80px;
+  color: royalblue;
   margin-right: 20px;
 }
 
@@ -227,7 +451,7 @@ export default {
   margin: auto;
   overflow: hidden;
   position: relative;
-  width: 100vw;
+  width: 100px;
 }
 
 .slider::before,
@@ -251,7 +475,7 @@ export default {
 }
 
 .slider {
-  animation: fade 3s ease-in-out infinite;
+  animation: fade 3s linear infinite;
   display: flex;
   width: calc(250px * 14);
 }
@@ -260,6 +484,14 @@ export default {
   height: 100px;
   width: 250px;
   padding-left: 20px;
+}
+
+.slider .slide i {
+  width: 200px;
+  padding: 36px;
+  color: #191919;
+  background-color: #bec1ff;
+  border-radius: 16px;
 }
 
 section {
@@ -273,6 +505,7 @@ section {
   justify-content: center;
   text-align: center;
   height: 100vh;
+  background: linear-gradient(#0030b0, #001e9a, #000c73) no-repeat;
 }
 
 .hero-container {
@@ -407,7 +640,7 @@ button:hover p::before {
 .form label .input {
   color: black;
   width: 100%;
-  padding: 10px 10px 20px 10px;
+  padding: 15px 10px 15px 12px;
   outline: 0;
   border: 1px solid rgba(105, 105, 105, 0.397);
   border-radius: 10px;
@@ -466,6 +699,40 @@ button:hover p::before {
   display: flex;
 }
 
+
+.blob {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  fill: royalblue;
+  width: 1500px;
+  z-index: -1;
+  animation: move 15s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes move {
+  0% {
+    transform: scale(1) translate(10px, -30px);
+  }
+  38% {
+    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+  }
+  40% {
+    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+  }
+  78% {
+    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+  }
+  80% {
+    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+  }
+  100% {
+    transform: scale(1) translate(10px, -30px);
+  }
+}
+
 @keyframes pulse {
   from {
     transform: scale(0.9);
@@ -494,6 +761,13 @@ button:hover p::before {
 }
 
 @media only screen and (max-width: 768px) {
+  .section-why {
+    flex-direction: column;
+  }
+  .blob {
+    display: block;
+  }
+
   .hero-waves {
     width: 200vw;
     margin-left: -120px;
