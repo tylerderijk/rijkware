@@ -11,6 +11,9 @@
     <img src="./assets/img/clouds/cloud-one.png" alt="clouds" class="cloud cloud-four">
     <img src="./assets/img/clouds/cloud-two.png" alt="clouds" class="cloud cloud-five">
   </main>
+  <footer style="background-color: red; height: 200px;">
+    call me
+  </footer>
 </template>
 <script>
 import anime from 'animejs';
