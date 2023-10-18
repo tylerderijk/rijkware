@@ -11,8 +11,18 @@
     <img src="./assets/img/clouds/cloud-one.png" alt="clouds" class="cloud cloud-four">
     <img src="./assets/img/clouds/cloud-two.png" alt="clouds" class="cloud cloud-five">
   </main>
-  <footer style="background-color: red; height: 200px;">
-    call me
+  <footer>
+    <div>
+      <p>KvK: 824 77 999</p>
+      <p>&copy; 2023 Rijkware [Amsterdam, the Netherlands]</p>
+    </div>
+    <small style="text-align: center; color: whitesmoke; opacity: 0.5; width: 400px;">
+      If you're still unsure about the skills of Student Developers, consider this:<br><br>
+      This website was crafted by Tyler de Rijk during his third year of Software Engineering at the University of
+      Applied Sciences in Amsterdam, and he had no prior development experience.<br><br>
+      18th October 2023
+    </small>
+    <img src="./assets/img/RijkwareLogo20231014.png" alt="Rijkware" class="rijkware_logo_footer">
   </footer>
 </template>
 <script>
@@ -117,6 +127,27 @@ export default {
 }
 </script>
 <style>
+footer {
+  background-color: royalblue;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer p {
+  color: white;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.5rem;
+  padding: 20px;
+}
+
+.rijkware_logo_footer {
+  text-align: center;
+  height: 120px;
+  padding: 20px;
+}
+
 router-view {
   z-index: 99999;
 }
@@ -233,8 +264,7 @@ nav.show-nav {
 }
 
 .menu_button {
-//font-size: 1.5rem; //font-family: 'Bricolage Grotesque', sans-serif; text-transform: uppercase;
-//position: absolute; //top: 10px; //right: 10px; //z-index: 100; //padding: 1rem; //background-color: rgba(255, 255, 255, 0); //border: 1px solid rgba(255, 255, 255, 0);
+//font-size: 1.5rem; //font-family: 'Bricolage Grotesque', sans-serif; text-transform: uppercase; //position: absolute; //top: 10px; //right: 10px; //z-index: 100; //padding: 1rem; //background-color: rgba(255, 255, 255, 0); //border: 1px solid rgba(255, 255, 255, 0);
 
 }
 

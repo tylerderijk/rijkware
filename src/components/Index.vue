@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="main-container" id="form">
     <div class="hero-container">
       <h1 class="hero-text-large">
         <span class="hero-letters">Experienced Student Developers Ready to Take the Next Step</span>
@@ -7,7 +7,47 @@
     </div>
     <div class="hero-container-form">
       <form class="form">
-        <p class="title">Schedule a free Consultation</p>
+        <div class="radio-inputs">
+          <label>
+            <input class="radio-input" type="radio" name="engine">
+            <span class="radio-tile">
+					<span class="radio-icon">
+            <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd"
+        d="M7.2 7.2V6a3.6 3.6 0 0 1 3.6-3.6h2.4A3.6 3.6 0 0 1 16.8 6v1.2h2.4a2.4 2.4 0 0 1 2.4 2.4v4.284A27.542 27.542 0 0 1 12 15.6a27.542 27.542 0 0 1-9.6-1.716V9.6a2.4 2.4 0 0 1 2.4-2.4h2.4ZM9.6 6a1.2 1.2 0 0 1 1.2-1.2h2.4A1.2 1.2 0 0 1 14.4 6v1.2H9.6V6Zm1.2 6a1.2 1.2 0 0 1 1.2-1.2h.012a1.2 1.2 0 1 1 0 2.4H12a1.2 1.2 0 0 1-1.2-1.2Z"
+        clip-rule="evenodd"></path>
+  <path
+      d="M2.4 16.43v2.77a2.4 2.4 0 0 0 2.4 2.4h14.4a2.4 2.4 0 0 0 2.4-2.4v-2.77A29.97 29.97 0 0 1 12 18c-3.355 0-6.584-.552-9.6-1.57Z"></path>
+</svg>
+					</span>
+					<span class="radio-label">Business</span>
+				</span>
+          </label>
+          <label>
+            <input checked="" class="radio-input" type="radio" name="engine">
+            <span class="radio-tile">
+				<span class="radio-icon">
+          <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path
+      d="M12.473 2.496a1.2 1.2 0 0 0-.946 0l-8.4 3.6a1.2 1.2 0 0 0 0 2.208L6.3 9.661c.118-.133.264-.238.427-.308l4.8-2.057a1.2 1.2 0 1 1 .946 2.206L9.2 10.906l2.328.997a1.2 1.2 0 0 0 .945 0l8.4-3.6a1.2 1.2 0 0 0 0-2.206l-8.4-3.6v-.001Zm-8.501 8.78L6 12.144v4.922a10.76 10.76 0 0 0-1.26-.208 1.2 1.2 0 0 1-1.068-1.068 13.338 13.338 0 0 1 .3-4.515v.001Zm7.188 8.612a10.831 10.831 0 0 0-2.76-1.966v-4.748l2.182.936a3.6 3.6 0 0 0 2.836 0l6.61-2.834c.358 1.477.46 3.004.3 4.515a1.2 1.2 0 0 1-1.068 1.068 10.76 10.76 0 0 0-6.42 3.029 1.2 1.2 0 0 1-1.68 0ZM7.2 21.6a1.2 1.2 0 0 0 1.2-1.2v-2.478a10.72 10.72 0 0 0-2.4-.854V20.4a1.2 1.2 0 0 0 1.2 1.2Z"></path>
+</svg>
+				</span>
+				<span class="radio-label">Student</span>
+			</span>
+          </label>
+          <label>
+            <input class="radio-input" type="radio" name="engine">
+            <span class="radio-tile">
+					<span class="radio-icon">
+            <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M21.6 12a9.6 9.6 0 1 1-19.2 0 9.6 9.6 0 0 1 19.2 0Zm-8.4-4.8a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Zm-2.4 3.6a1.2 1.2 0 0 0 0 2.4v3.6A1.2 1.2 0 0 0 12 18h1.2a1.2 1.2 0 1 0 0-2.4V12a1.2 1.2 0 0 0-1.2-1.2h-1.2Z" clip-rule="evenodd"></path>
+</svg>
+					</span>
+					<span class="radio-label">Other</span>
+				</span>
+          </label>
+        </div>
+        <p class="title">Schedule a <span class="title-free">Free</span> Consultation</p>
         <div class="flex">
           <label>
             <input v-model="firstName" maxlength="30" required placeholder="First Name" type="text" class="input"/>
@@ -24,12 +64,23 @@
                     class="input message-input"></textarea>
         </label>
         <small class="message-input-count">{{ this.message.length }}/200</small>
+
+
+
+
+
+
+
+
+
+
         <button class="submit">
           Send
         </button>
-        <!--        <p class="visit-contact-page">-->
-        <!--          Visit our <a>contact page</a> for other options.-->
-        <!--        </p>-->
+        <p class="visit-contact-page">
+          Other options available at the <a href="#contactService" style="text-underline-offset: 4px;">Contact &
+          Service</a> section.
+        </p>
       </form>
     </div>
     <h2 class="title-hire-student-developer">
@@ -42,8 +93,6 @@
     <path fill="royalblue" fill-opacity="1"
           d="M0,224L26.7,208C53.3,192,107,160,160,122.7C213.3,85,267,43,320,58.7C373.3,75,427,149,480,160C533.3,171,587,117,640,128C693.3,139,747,213,800,213.3C853.3,213,907,139,960,117.3C1013.3,96,1067,128,1120,149.3C1173.3,171,1227,181,1280,202.7C1333.3,224,1387,256,1413,272L1440,288L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"></path>
   </svg>
-
-
   <section class="section-why">
     <div class="holder-why">
       <h3 class="title-why">7 Reasons Why You Should Choose Rijkware.</h3>
@@ -69,35 +118,13 @@
       <img class="image-why" src="../assets/img/iphone14prorijkware.png" alt="">
     </div>
   </section>
-  <!--  <div class="brand-holder">-->
-  <!--    <div class="brand-section">-->
-  <!--      <div class="brand-vignette-left"></div>-->
-  <!--      <div class="brand-vignette-right"></div>-->
-  <!--      <div class="brand-section-icons">-->
-  <!--        <div class="section-title">-->
-  <!--          <h2>Student Developers Experienced with:</h2>-->
-  <!--        </div>-->
-  <!--        <div>-->
-  <!--          <div class="slider">-->
-  <!--            <div class="slide" v-for="(iconClass, index) in brandIcons" :key="index">-->
-  <!--              <i class="fa-brands" :class="iconClass"></i>-->
-  <!--            </div>-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--        <small>and <strong>many</strong> more!</small>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-
   <section class="section-student">
     <div class="holder-student">
       <h2 class="text-student">Are you an IT Student looking for work?</h2>
       <span>Rijkware helps you find positions/projects which you can combine with your studies. </span>
-      <button class="btn-student">Contact us</button>
+      <a class="btn-student" href="#form">Contact us</a>
     </div>
   </section>
-
-
   <section class="section-steps">
     <div class="counters-steps">
       <div class="container">
@@ -130,7 +157,6 @@
               <label for="step-two" class="radio-tile-label">2</label>
             </div>
           </div>
-
           <div class="input-container">
             <input id="step-three" class="radio-button" type="radio" name="radio" @click="changeStep(3)">
             <div class="radio-tile">
@@ -144,7 +170,6 @@
               <label for="step-three" class="radio-tile-label">3</label>
             </div>
           </div>
-
           <div class="input-container">
             <input id="step-four" class="radio-button" type="radio" name="radio" @click="changeStep(4)">
             <div class="radio-tile">
@@ -159,7 +184,6 @@
               <label for="step-four" class="radio-tile-label">4</label>
             </div>
           </div>
-
           <div class="input-container">
             <input id="step-five" class="radio-button" type="radio" name="radio" @click="changeStep(5)">
             <div class="radio-tile">
@@ -172,7 +196,6 @@
               <label for="step-five" class="radio-tile-label">5</label>
             </div>
           </div>
-
           <div class="input-container">
             <input id="step-six" class="radio-button" type="radio" name="radio" @click="changeStep(6)">
             <div class="radio-tile">
@@ -186,11 +209,9 @@
               <label for="step-six" class="radio-tile-label">6</label>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
     <div class="holder-steps">
       <div v-if="!this.currentStep['isOnRightSide']" v-html="this.currentStep['svg']"></div>
       <div class="text-steps">
@@ -198,13 +219,6 @@
         <p>{{ this.currentStep["text"] }}</p>
       </div>
       <div v-if="this.currentStep['isOnRightSide']" v-html="this.currentStep['svg']"></div>
-
-      <!--      <svg height="348" width="348" fill="#4662ab" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
-      <!--        <path-->
-      <!--            d="M2.4 6a2.4 2.4 0 0 1 2.4-2.4h8.4A2.4 2.4 0 0 1 15.6 6v4.8a2.4 2.4 0 0 1-2.4 2.4h-2.4l-3.6 3.6v-3.6H4.8a2.4 2.4 0 0 1-2.4-2.4V6Z"></path>-->
-      <!--        <path-->
-      <!--            d="M18 8.4v2.4a4.8 4.8 0 0 1-4.8 4.8h-1.406l-2.12 2.12c.336.18.72.28 1.126.28h2.4l3.6 3.6V18h2.4a2.4 2.4 0 0 0 2.4-2.4v-4.8a2.4 2.4 0 0 0-2.4-2.4H18Z"></path>-->
-      <!--      </svg>-->
     </div>
 
   </section>
@@ -214,7 +228,7 @@
     <h2>Frequently Asked Questions</h2>
   </div>
   <section class="section-qna">
-    <details class="holder-qna">
+    <details class="holder-qna" v-for="faq in this.allFaqs">
       <summary>
         <h3 class="title-why">
           <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -222,106 +236,44 @@
                   d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
                   clip-rule="evenodd"></path>
           </svg>
-          What does Rijkware do?
+          {{ faq["summary"] }}
         </h3>
       </summary>
       <div class="text-why">
         <p>
-          Rijkware is a platform connecting businesses or individuals with talented student developers. We facilitate
-          collaborations between companies and students studying in IT-related fields. Enabling them to gain real-world
-          experience while providing businesses with cost-effective solutions to their software needs.
+          {{ faq["text"] }}
         </p>
       </div>
     </details>
   </section>
-  <section class="section-qna">
-    <details class="holder-qna">
-      <summary>
-        <h3 class="title-why">
-          <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
-                  clip-rule="evenodd"></path>
-          </svg>
-          What kind of projects can student developers work on?
-        </h3>
-      </summary>
-      <div class="text-why">
-        <p>
-          Our student developers are proficient in a wide range of technologies and can work on various projects,
-          including web development, mobile app development, data analysis, and more. Students are also capable of
-          learning new skills to fit your needs. <br><br>
-          <strong>Rijkware prioritizes students academic success. Therefore, we do not accept projects that require
-            students to
-            work full-time (32-40 hours) unless they provide a flexible schedule.</strong>
-        </p>
-      </div>
-    </details>
-  </section>
-  <section class="section-qna">
-    <details class="holder-qna">
-      <summary>
-        <h3 class="title-why">
-          <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
-                  clip-rule="evenodd"></path>
-          </svg>
-          Do I need to provide guidance to the student developers?
-        </h3>
-      </summary>
-      <div class="text-why">
-        <p>
-          Why pay more when the result is the same?
-        </p>
-      </div>
-    </details>
-  </section>
-  <section class="section-qna">
-    <details class="holder-qna">
-      <summary>
-        <h3 class="title-why">
-          <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                  d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
-                  clip-rule="evenodd"></path>
-          </svg>
-          How do I get started with Rijkware?
-        </h3>
-      </summary>
-      <div class="text-why">
-        <p>
-          Why pay more when the result is the same?
-        </p>
-      </div>
-    </details>
-  </section>
-  <div class="section-title">
+
+
+  <div class="section-title" id="contactService">
     <h2>Contact & Service</h2>
   </div>
   <section class="section-contact">
     <div class="holder-contact">
-      <div class="card-contact card-contact-form">
+      <div class="card-contact card-contact-form" href="#form">
         <div>
           <i class="fa-solid fa-address-book"></i>
           <h4>Contact us</h4>
         </div>
-          <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">FASTEST!</strong>
-        <p>Use this form </p>
+        <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">FASTEST!</strong>
+        <a href="#form">Use this form</a>
       </div>
       <div class="card-contact">
         <div>
           <i class="fa-solid fa-envelope"></i>
           <h4>Email us</h4>
         </div>
-        <p>support@rijkwa.re</p>
+        <a href="mailto:contact@rijkwa.re">contact@rijkwa.re</a>
       </div>
       <div class="card-contact">
         <div>
           <i class="fa-solid fa-phone"></i>
           <h4>Call us</h4>
         </div>
-        <p>+31 6 420 68 928</p>
+        <a href="tel:+31642068928">+31 6 420 68 928</a>
       </div>
     </div>
   </section>
@@ -330,6 +282,7 @@
 <script>
 import anime from 'animejs';
 import steps from "../assets/json/steps.js";
+import faqs from "../assets/json/faqs.js";
 
 export default {
   name: "HomePage",
@@ -337,10 +290,12 @@ export default {
     return {
       currentStep: {},
       allSteps: [],
+      allFaqs: [],
       firstName: "",
       lastName: "",
       email: "",
       message: "",
+      formType: 1,
       brandIcons: [
         "fa-php",
         "fa-html5",
@@ -368,8 +323,11 @@ export default {
     steps.forEach((step) => {
       this.allSteps.push(step);
     });
-
     this.currentStep = this.allSteps[0];
+
+    faqs.forEach((faq) => {
+      this.allFaqs.push(faq);
+    });
 
     this.startBrandAnimation();
   },
@@ -409,6 +367,10 @@ export default {
       }, 3000);
     },
 
+    changeForm(type) {
+
+    },
+
     changeStep(step) {
       switch (step) {
         case 1:
@@ -430,11 +392,129 @@ export default {
           this.currentStep = this.allSteps[5];
           break;
       }
-    }
+    },
   }
 };
 </script>
 <style scoped>
+.radio-inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.radio-inputs > * {
+  margin: 6px;
+}
+
+.radio-input:checked + .radio-tile {
+  border-color: #2260ff;
+  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  color: #2260ff;
+}
+
+.radio-input:checked + .radio-tile:before {
+  transform: scale(1);
+  opacity: 1;
+  background-color: #2260ff;
+  border-color: #2260ff;
+}
+
+.radio-input:checked + .radio-tile .radio-icon svg {
+  fill: #2260ff;
+}
+
+.radio-input:checked + .radio-tile .radio-label {
+  color: #2260ff;
+}
+
+.radio-input:focus + .radio-tile {
+  border-color: #2260ff;
+  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+}
+
+.radio-input:focus + .radio-tile:before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.radio-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  min-height: 80px;
+  border-radius: 0.5rem;
+  border: 2px solid #b5bfd9;
+  background-color: #fff;
+  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.15s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.radio-tile:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid #b5bfd9;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 0.25rem;
+  left: 0.25rem;
+  opacity: 0;
+  transform: scale(0);
+  transition: 0.25s ease;
+}
+
+.radio-tile:hover {
+  border-color: #2260ff;
+}
+
+.radio-tile:hover:before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.radio-icon svg {
+  width: 2rem;
+  height: 2rem;
+  fill: #494949;
+}
+
+.radio-label {
+  color: #707070;
+  transition: 0.375s ease;
+  text-align: center;
+  font-size: 13px;
+}
+
+.radio-input {
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+.card-contact a {
+  color: royalblue;
+  font-weight: bold;
+  text-underline-offset: 8px;
+}
+
 .card-contact p {
   user-select: none;
 }
@@ -443,9 +523,14 @@ export default {
   font-size: 64px;
 }
 
+.card-contact:hover {
+  transform: scale(1.02, 1.02);
+  transition: transform 300ms ease;
+}
+
 .card-contact {
   width: 300px;
-  height: 95%;
+  height: 100%;
   background-color: #fff;
   border-radius: 36px;
   display: flex;
@@ -457,7 +542,7 @@ export default {
 
 .card-contact-form {
   outline: #bec1ff solid 4px;
-  //background-color: ;
+//background-color: ;
 }
 
 .holder-contact {
@@ -472,7 +557,7 @@ export default {
 .section-contact {
   margin: 36px 0;
   width: 100vw;
-  height: 300px;
+  height: 350px;
   display: flex;
   justify-content: center;
 }
@@ -707,6 +792,7 @@ export default {
 }
 
 .btn-student {
+  text-decoration: none;
   background-color: white;
   border: none;
   border-radius: 36px;
@@ -756,6 +842,8 @@ details > summary::-webkit-details-marker {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .section-title {
@@ -861,89 +949,7 @@ li::marker {
   justify-content: center;
 }
 
-.brand-section {
-}
 
-.brand-section small {
-  font-family: 'Quicksand', sans-serif;
-  opacity: 0.8;
-  margin: 10px 0;
-  color: #191919;
-}
-
-.brand-section small strong {
-  color: #191919;
-}
-
-/* Apply vignette effect to the left */
-.brand-vignette-leftx {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, royalblue, rgba(65, 105, 225, 0.39), rgba(0, 0, 0, 0) 100%);
-  z-index: 80;
-}
-
-/* Apply vignette effect to the right */
-.brand-vignette-rightx {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to left, royalblue, rgba(65, 105, 225, 0.39), rgba(0, 0, 0, 0) 100%);
-  z-index: 80;
-}
-
-/* Apply animation to all text elements */
-.brand-section-icons {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.fa-brands {
-//background-image: url("../assets/img/RijkwareLogo20231014.png"); padding-top: 30px; font-size: 80px; color: royalblue; margin-right: 20px;
-}
-
-.slider {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  height: 150px;
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-  width: 100px;
-}
-
-.slider::before,
-.slider::after {
-  content: "";
-  height: 100px;
-  position: absolute;
-  width: 200px;
-  z-index: 2;
-}
-
-.slider::after {
-  right: 0;
-  top: 0;
-  transform: rotateZ(180deg);
-}
-
-.slider::before {
-  left: 0;
-  top: 0;
-}
-
-.slider {
-  animation: fade 3s linear infinite;
-  display: flex;
-  width: calc(250px * 14);
-}
 
 .slider .slide {
   height: 100px;
@@ -1035,47 +1041,27 @@ button:hover p::before {
   transition: ease-in-out 100ms;
 }
 
-.form:hover, .form:focus-within {
-  transform: scale(1.01);
+.title-free {
+  font-family: 'Lexend', sans-serif;
+  color: mediumseagreen;
+  font-weight: 600;
+  padding: 0 6px;
 }
 
+
 .title {
-  text-align: left;
-  font-family: 'Lexend', sans-serif;
-  font-size: 28px;
-  color: royalblue;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 26px;
+  color: #191919;
   font-weight: 600;
-  letter-spacing: -1px;
   position: relative;
   display: flex;
   align-items: center;
-  padding-left: 30px;
-}
-
-.title::before, .title::after {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  left: 0;
-  background-color: royalblue;
-}
-
-.title::before {
-  width: 18px;
-  height: 18px;
-  background-color: royalblue;
-}
-
-.title::after {
-  width: 18px;
-  height: 18px;
-  animation: pulse 1s linear infinite;
 }
 
 
-.message, .visit-contact-page {
+
+.visit-contact-page {
   color: rgba(88, 87, 87, 0.822);
   font-size: 14px;
 }
