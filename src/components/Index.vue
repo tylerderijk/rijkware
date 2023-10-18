@@ -40,7 +40,9 @@
             <span class="radio-tile">
 					<span class="radio-icon">
             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M21.6 12a9.6 9.6 0 1 1-19.2 0 9.6 9.6 0 0 1 19.2 0Zm-8.4-4.8a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Zm-2.4 3.6a1.2 1.2 0 0 0 0 2.4v3.6A1.2 1.2 0 0 0 12 18h1.2a1.2 1.2 0 1 0 0-2.4V12a1.2 1.2 0 0 0-1.2-1.2h-1.2Z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd"
+        d="M21.6 12a9.6 9.6 0 1 1-19.2 0 9.6 9.6 0 0 1 19.2 0Zm-8.4-4.8a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Zm-2.4 3.6a1.2 1.2 0 0 0 0 2.4v3.6A1.2 1.2 0 0 0 12 18h1.2a1.2 1.2 0 1 0 0-2.4V12a1.2 1.2 0 0 0-1.2-1.2h-1.2Z"
+        clip-rule="evenodd"></path>
 </svg>
 					</span>
 					<span class="radio-label">Other</span>
@@ -64,14 +66,6 @@
                     class="input message-input"></textarea>
         </label>
         <small class="message-input-count">{{ this.message.length }}/200</small>
-
-
-
-
-
-
-
-
 
 
         <button class="submit">
@@ -99,17 +93,10 @@
       <p class="text-why">
         Rijkware Student Developers are the smart choice for your projects. They are well-prepared, cost-effective,
         and dedicated to your success:
-
         <ul>
-          <li><span class="li-why">Cost-Effective</span>:<br> High-quality work at a budget-friendly price.</li>
-          <li><span class="li-why">Clear Contracts</span>:<br> Transparent agreements before work begins.</li>
-          <li><span class="li-why">Experience Growth</span>:<br> Support students in gaining real-world expertise.
-          </li>
-          <li><span class="li-why">Flexibility</span>:<br> Choose on-site or remote collaboration.</li>
-          <li><span class="li-why">Regular Updates</span>:<br> Stay informed with progress reports.</li>
-          <li><span class="li-why">Cutting-Edge Skills</span>:<br> Proficiency in the latest technologies.</li>
-          <li><span class="li-why">Payment Options</span>:<br> Pay weekly, monthly, or upon project completion. Choose
-            hourly rates or project-based billing.
+          <li v-for="reason in this.allReasons"><span class="li-why">{{ reason["title"] }}</span>:<br> {{
+              reason["text"]
+            }}
           </li>
         </ul>
       </p>
@@ -283,6 +270,7 @@
 import anime from 'animejs';
 import steps from "../assets/json/steps.js";
 import faqs from "../assets/json/faqs.js";
+import reasons from "@/assets/json/reasons";
 
 export default {
   name: "HomePage",
@@ -291,6 +279,7 @@ export default {
       currentStep: {},
       allSteps: [],
       allFaqs: [],
+      allReasons: [],
       firstName: "",
       lastName: "",
       email: "",
@@ -327,6 +316,10 @@ export default {
 
     faqs.forEach((faq) => {
       this.allFaqs.push(faq);
+    });
+
+    reasons.forEach((reason) => {
+      this.allReasons.push(reason);
     });
 
     this.startBrandAnimation();
@@ -413,8 +406,7 @@ export default {
 
 .radio-input:checked + .radio-tile {
   border-color: #2260ff;
-  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
+//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transform: translateY(-5px);
   color: #2260ff;
 }
 
@@ -435,7 +427,7 @@ export default {
 
 .radio-input:focus + .radio-tile {
   border-color: #2260ff;
-  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
 }
 
 .radio-input:focus + .radio-tile:before {
@@ -453,8 +445,7 @@ export default {
   border-radius: 0.5rem;
   border: 2px solid #b5bfd9;
   background-color: #fff;
-  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transition: 0.15s ease;
+//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transition: 0.15s ease;
   cursor: pointer;
   position: relative;
 }
@@ -950,7 +941,6 @@ li::marker {
 }
 
 
-
 .slider .slide {
   height: 100px;
   width: 250px;
@@ -1058,7 +1048,6 @@ button:hover p::before {
   display: flex;
   align-items: center;
 }
-
 
 
 .visit-contact-page {

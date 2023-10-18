@@ -5,27 +5,28 @@ export const reasons = [
     },
     {
         title: "Clear Contracts",
-        text: "High-quality work at a budget-friendly price.",
+        text: "Transparent agreements before work begins.",
     },
     {
         title: "Experience Growth",
-        text: "High-quality work at a budget-friendly price.",
+        text: "Support students in gaining real-world expertise.",
     },
     {
-        title: "Cost-Effective",
-        text: "High-quality work at a budget-friendly price.",
+        title: "Flexibility",
+        text: "Choose on-site or remote collaboration.",
     },
     {
-        title: "Cost-Effective",
-        text: "High-quality work at a budget-friendly price.",
+        title: "Monthly Progress Reports",
+        text: "Stay informed with progress reports.",
     },
     {
-        title: "Cost-Effective",
-        text: "High-quality work at a budget-friendly price.",
+        title: "Cutting-Edge Skills",
+        text: "Proficiency in the latest technologies.",
     },
     {
-        title: "Cost-Effective",
-        text: "High-quality work at a budget-friendly price.",
+        title: "Payment Options",
+        text: "Pay weekly, monthly, or upon project completion. Choose\n" +
+            "            hourly rates or project-based billing.",
     },
 ];
 
