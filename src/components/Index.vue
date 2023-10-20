@@ -58,7 +58,7 @@
         <form-other v-if="this.formType[2]"
                     :results="this.otherFormResults"
                     @submit="submitForm(this.businessFormResults)"/>
-        <button class="submit">
+        <button class="submit" @click="this.submitForm()">
           Send
         </button>
         <p class="visit-contact-page">
@@ -77,23 +77,20 @@
     <path fill="royalblue" fill-opacity="1"
           d="M0,224L26.7,208C53.3,192,107,160,160,122.7C213.3,85,267,43,320,58.7C373.3,75,427,149,480,160C533.3,171,587,117,640,128C693.3,139,747,213,800,213.3C853.3,213,907,139,960,117.3C1013.3,96,1067,128,1120,149.3C1173.3,171,1227,181,1280,202.7C1333.3,224,1387,256,1413,272L1440,288L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"></path>
   </svg>
-  <section class="section-why">
+  <section class="section-why fade-in-section">
     <div class="image-why-holder">
       <img class="image-why" src="../assets/img/iphone14prorijkware.png" alt="">
     </div>
-    <div class="holder-why">
-      <h3 class="title-why">7 Reasons Why You Should Choose Rijkware.</h3>
-      <p class="text-why">
-        Rijkware Student Developers are the smart choice for your projects. They are well-prepared, cost-effective,
-        and dedicated to your success:
-        <br>
-        <br>
-        <ul>
-          <li v-for="reason in this.allReasons"><span class="li-why">{{ reason.title }}</span><br>
-            {{ reason.text }}
-          </li>
-        </ul>
-      </p>
+    <div class="reason-section">
+
+      <div class="holder-why">
+        <h3 class="title-why">7 Reasons Why You Should Choose Rijkware.</h3>
+      </div>
+      <ul>
+        <li class="reason-why" v-for="reason in this.allReasons"><span class="li-why">{{ reason.title }}</span><br>
+          {{ reason.text }}
+        </li>
+      </ul>
     </div>
 
   </section>
@@ -212,7 +209,7 @@
   <section class="section-qna">
     <details class="holder-qna" v-for="faq in this.allFaqs">
       <summary>
-        <h3 class="title-why">
+        <h3 class="title-faq-why">
           <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
                   d="M12 21.6a9.6 9.6 0 1 0 0-19.2 9.6 9.6 0 0 0 0 19.2Zm4.448-10.448-3.6-3.6a1.2 1.2 0 0 0-1.696 1.696l1.551 1.552H8.4a1.2 1.2 0 1 0 0 2.4h4.303l-1.551 1.552a1.2 1.2 0 1 0 1.696 1.696l3.6-3.6a1.2 1.2 0 0 0 0-1.696Z"
@@ -389,6 +386,44 @@ export default {
           // offset: '-=775',
         });
 
+
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    const mobileCheck = () => {
+      let check = false;
+      (function (a) {
+        if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+      })(navigator.userAgent || navigator.vendor || window.opera);
+      return check;
+    };
+
+// Function to handle scroll events
+    function handleScroll() {
+      const sections = document.querySelectorAll('.fade-in-section');
+
+      sections.forEach((section) => {
+        if (isInViewport(section) || mobileCheck()) {
+          section.classList.add('is-visible');
+        }
+      });
+    }
+
+// Add a scroll event listener to trigger the fade-in effect
+    window.addEventListener('scroll', handleScroll);
+
+// Trigger the effect initially on page load
+    handleScroll();
+
+
   },
   computed: {},
   methods: {
@@ -405,10 +440,30 @@ export default {
       });
     },
 
-    submitForm(results) {
-      console.log(results);
+    submitForm() {
+      if (this.formType[0]) {
+        if (!this.checkValues(this.businessFormResults)) {
+          alert('Please fill in all the fields');
+          return;
+        }
+      } else if (this.formType[1]) {
+        if (!this.checkValues(this.studentFormResults)) {
+          alert('Please fill in all the fields');
+          return;
+        }
+      } else if (this.formType[2]) {
+        if (!this.checkValues(this.otherFormResults)) {
+          alert('Please fill in all the fields');
+          return;
+        }
+      }
 
-      // Regex checks the results object for empty values
+      this.postMessage()
+
+
+    },
+
+    checkValues(results) {
       const regex = new RegExp(/^[a-zA-Z0-9]+$/);
       const resultsArray = Object.values(results);
 
@@ -418,65 +473,61 @@ export default {
 
       if (resultsArrayFiltered.length !== resultsArray.length) {
         alert('Please fill in all the fields');
-        return;
+        return false;
       }
-
-
-      if (this.formType[0]) {
-        this.sendBusinessForm(results);
-      } else if (this.formType[1]) {
-        this.sendStudentForm(results);
-      } else if (this.formType[2]) {
-        this.sendOtherForm(results);
-      }
-
     },
-
-    sendBusinessForm(results) {
-      const data = {
-        type: 'business',
-        firstName: results.firstName,
-        lastName: results.lastName,
-        email: results.email,
-        phone: results.phone,
-        message: results.message,
-      };
-
-      this.postMessage(data)
-    },
-
 
     postMessage(data) {
       let url = 'rijkware.nl/api/contact/';
+      let msg;
 
       if (data.type === 'business') {
         url += 'business';
+        msg = this.businessFormResults;
       } else if (data.type === 'student') {
         url += 'student';
+        msg = this.studentFormResults;
       } else {
         url += 'other';
+        msg = this.otherFormResults;
       }
 
-      this.$axios.post(url, data)
-          .then((response) => {
-            console.log(response);
-            this.$router.push({name: 'success'});
-          })
-          .catch((error) => {
-            console.log(error);
-            this.$router.push({name: 'error'});
-          });
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(msg),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          alert('Message sent!');
+        } else {
+          alert('Something went wrong, please try again later');
+        }
+      });
 
 
     },
 
     changeStep(step) {
-      this.currentStep = this.allSteps[step-1]
+      this.currentStep = this.allSteps[step - 1]
     },
   }
 }
 </script>
 <style scoped>
+.fade-in-section {
+  opacity: 0; /* Initially, sections are invisible */
+  transform: translateY(20px); /* Initially, they are pushed down by 20px */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1; /* Sections become visible */
+  transform: translateY(0); /* Sections move back to their original position */
+}
+
+
 .radio-inputs {
   display: flex;
   justify-content: center;
@@ -513,7 +564,6 @@ export default {
 
 .radio-input:focus + .radio-tile-form {
   border-color: #2260ff;
-//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
 }
 
 .radio-input:focus + .radio-tile-form:before {
@@ -531,7 +581,6 @@ export default {
   border-radius: 0.5rem;
   border: 2px solid #b5bfd9;
   background-color: #fff;
-//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transition: 0.15s ease; cursor: pointer; position: relative;
 }
 
 .radio-tile-form:before {
@@ -574,7 +623,6 @@ export default {
 
 .radio-input {
   clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(100%);
   clip-path: inset(100%);
   height: 1px;
   overflow: hidden;
@@ -758,7 +806,7 @@ export default {
   width: 70vmax;
   height: 70vmax;
   position: absolute;
-  background: rgba(255, 255, 255, 0.17);
+  background: rgba(255, 255, 255, 0.12);
   left: -20vmin;
   top: -20vmin;
   animation: morph 15s linear infinite alternate, spin 20s linear infinite;
@@ -860,10 +908,11 @@ export default {
 }
 
 .btn-student {
+  font-family: 'Lexend', sans-serif;
   text-decoration: none;
   background-color: white;
   border: none;
-  border-radius: 36px;
+  border-radius: 16px;
   padding: 20px 30px;
   font-weight: bold;
   color: royalblue;
@@ -887,7 +936,7 @@ export default {
 }
 
 
-details[open] .title-why svg {
+details[open] .title-faq-why svg {
   transform: rotate(90deg);
   transition: transform 0.3s ease;
 }
@@ -935,25 +984,68 @@ details > summary::-webkit-details-marker {
 
 .section-why {
   margin: 36px 0;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .holder-why {
-  height: 700px;
   display: flex;
-//align-items: center; flex-direction: column; width: 700px; max-width: 1250px; //gap: 20px; padding: 20px; background-color: #cedbff; border-radius: 36px;
+  flex-direction: column;
+  width: 700px;
+  max-width: 1250px;
+  gap: 20px;
+  padding: 20px 20px 0 20px;
+  background-color: #cedbff;
+  border-radius: 36px;
+  z-index: 10;
+}
+
+.reason-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  padding: 0 20px;
+}
+
+.reason-why {
+  border-radius: 18px;
+  margin-bottom: 10px;
+  padding: 5px 5px 10px 16px;
+  list-style-type: upper-roman;
+  background: whitesmoke;
+  box-shadow: 20px 20px 60px #d0d3d9,
+  -20px -20px 60px #ffffff,
+  -5px -5px 30px #d0d3d9;
+}
+
+.li-why {
+  font-family: 'Quicksand', serif;
+  font-weight: bold;
+  color: royalblue;
+  font-size: 1.2rem;
+}
+
+ul {
+//text-align: center; padding-top: 15px; padding-left: 0;
+  width: 100%;
+  list-style-position: inside;
+}
+
+li::marker {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .image-why-holder {
   height: 700px;
   margin: 2rem;
-  background-color: #cedbff;
+  background-color: #0e3fcb;
   border-radius: 36px;
   overflow: hidden;
-//background-image: url("../assets/img/iphone14prorijkware.png");
 }
 
 .image-why {
@@ -966,27 +1058,18 @@ details > summary::-webkit-details-marker {
 .title-why {
   font: bold 2rem 'Quicksand', sans-serif;
   color: royalblue;
+  padding-bottom: 10px;
+}
+
+.title-faq-why {
+  font: bold 2rem 'Quicksand', sans-serif;
+  color: royalblue;
 }
 
 .text-why {
   font-family: Lexend, sans-serif;
+  margin: 0;
   color: #191919;
-}
-
-.li-why {
-  font-family: 'Quicksand', serif;
-  font-weight: bold;
-  color: royalblue;
-  font-size: 1.2rem;
-}
-
-li {
-  padding: 6px 0;
-  list-style-type: upper-roman;
-}
-
-li::marker {
-  font-weight: bold;
 }
 
 
@@ -1019,28 +1102,6 @@ li::marker {
   position: absolute;
   bottom: 0;
 //-webkit-filter: drop-shadow(-3px -3px 0 whitesmoke); //filter: drop-shadow(-3px -3px 0 whitesmoke);
-}
-
-.brand-holder {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.slider .slide {
-  height: 100px;
-  width: 250px;
-  padding-left: 20px;
-}
-
-.slider .slide i {
-  width: 200px;
-  padding: 36px;
-  color: #191919;
-  background-color: #bec1ff;
-  border-radius: 16px;
 }
 
 section {
@@ -1117,6 +1178,8 @@ button:hover p::before {
   border-radius: 24px;
   position: relative;
   transition: ease-in-out 100ms;
+  box-shadow: 20px 20px 60px rgba(19, 67, 180, 0.32),
+  -20px -20px 60px rgba(25, 91, 244, 0.3);
 }
 
 .visit-contact-page {
@@ -1184,20 +1247,38 @@ button:hover p::before {
 }
 
 @media only screen and (max-width: 768px) {
+  .card-contact strong {
+    padding-top: 40px;
+    font-size: 12px;
+  }
 
-  .holder-contact {
-    flex-direction: column;
-    gap: 20px;
-    height: fit-content;
+  .card-contact a {
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  .card-contact i {
+    font-size: 40px;
+    padding-bottom: 8px;
   }
 
   .section-contact {
+    margin-top: 0;
     height: fit-content;
+    width: 100vw;
+    flex-direction: row;
+  }
+
+  .holder-contact {
+    flex-wrap: wrap;
+    gap: 20px;
   }
 
   .card-contact {
-    height: 350px;
-    padding: 40px;
+    justify-content: space-evenly;
+    height: 180px;
+    width: 46%;
+  //padding: 10px;
   }
 
   .text-why p {
@@ -1225,6 +1306,10 @@ button:hover p::before {
     flex-direction: column;
     width: 95vw;
     height: 100%;
+  }
+
+  .reason-section {
+    margin-top: 20px;
   }
 
   .radio-tile-group {
@@ -1264,11 +1349,16 @@ button:hover p::before {
   }
 
   .title-why {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
   }
 
-  .title-why svg {
+  .title-faq-why {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .title-faq-why svg {
     width: 1.2rem;
     height: 1.2rem;
   }
@@ -1276,8 +1366,6 @@ button:hover p::before {
   .holder-why {
     width: 95vw;
     height: fit-content;
-    max-width: 400px;
-
   }
 
   .visit-contact-page {
@@ -1303,6 +1391,7 @@ button:hover p::before {
   }
 
   .section-why {
+    margin-top: 20px;
     flex-direction: column;
   }
 

@@ -2,6 +2,26 @@
   <router-link to="/" class="rijkware_logo_wrapper">
     <img src="./assets/img/RijkwareLogo20231014.png" alt="Rijkware" class="rijkware_logo">
   </router-link>
+  <div class="flag-toggle" @click="toggleFlag">
+    <div v-if="isEnglishFlag">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="45" height="30">
+        <clipPath id="t">
+          <path d="M25,15h25v15zv15h-25zh-25v-15zv-15h25z"/>
+        </clipPath>
+        <path d="M0,0v30h50v-30z" fill="#012169"/>
+        <path d="M0,0 50,30M50,0 0,30" stroke="#fff" stroke-width="6"/>
+        <path d="M0,0 50,30M50,0 0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/>
+        <path d="M-1 11h22v-12h8v12h22v8h-22v12h-8v-12h-22z" fill="#C8102E" stroke="#FFF" stroke-width="2"/>
+      </svg>
+    </div>
+    <div v-else>
+      <svg xmlns="http://www.w3.org/2000/svg" width="45" height="30" viewBox="0 0 9 6">
+        <rect fill="#21468B" width="9" height="6"/>
+        <rect fill="#FFF" width="9" height="4"/>
+        <rect fill="#AE1C28" width="9" height="2"/>
+      </svg>
+    </div>
+  </div>
   <main>
     <router-view/>
     <div class="cloud-holder">
@@ -37,6 +57,7 @@ export default {
     return {
       showLoaderScreen: true,
       disableScroll: true,
+      isEnglishFlag: true,
     }
   },
   watch: {
@@ -47,9 +68,7 @@ export default {
   beforeUpdate() {
   },
   mounted() {
-// Show the loader when your component is mounted
     this.showLoader();
-
 
     setTimeout(() => {
       this.hideLoader();
@@ -143,6 +162,9 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    toggleFlag() {
+      this.isEnglishFlag = !this.isEnglishFlag;
+    },
     getRandomInt(max) {
       return Math.floor(Math.random() * max);
     },
@@ -189,7 +211,6 @@ export default {
 }
 </script>
 <style>
-
 
 
 .rijkware_logo {
@@ -239,13 +260,22 @@ footer p {
 
 .rijkware_logo_footer {
   text-align: center;
-//height: 120px; width: 400px; padding: 20px;
-  opacity: 0.8;
+//height: 120px; width: 400px; padding: 20px; opacity: 0.8;
 }
 
 router-view {
   z-index: 99999;
 }
+
+
+.flag-toggle {
+  position: fixed;
+  top: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  cursor: pointer;
+  z-index: 999; /* Ensure it's above other elements */
+}
+
 
 main {
   z-index: 2;
@@ -293,7 +323,6 @@ main {
   width: 50px;
   opacity: 0;
 }
-
 
 
 ::-moz-selection { /* Code for Firefox */
