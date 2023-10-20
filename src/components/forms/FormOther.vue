@@ -1,8 +1,8 @@
 <script>
 export default {
-  name: "FormBusiness",
+  name: "FormOther",
   props: [
-      'results'
+    'results'
   ],
   emits: ['submit']
 }
@@ -10,24 +10,16 @@ export default {
 </script>
 
 <template>
-  <p class="title">Request a <span class="title-free">Free Consultation</span></p>
-  <div class="flex">
+  <p class="title">Learn more about <span class="title-free">Rijkware</span></p>
     <label>
-      <input v-model="results.firstName" maxlength="30" required placeholder="First Name" type="text" class="input"/>
+      <input v-model="results.name" maxlength="30" required placeholder="Name" type="text" class="input"/>
     </label>
-    <label>
-      <input v-model="results.lastName" maxlength="50" required placeholder="Last Name" type="text" class="input"/>
-    </label>
-  </div>
   <label>
     <input v-model="results.email" maxlength="50" required placeholder="Email" type="email" class="input"/>
   </label>
   <label>
-    <input v-model="results.phone" maxlength="50" required placeholder="Phone" type="text" class="input"/>
-  </label>
-  <label>
-    <textarea v-model="results.message" maxlength="200" required placeholder="Message"
-              class="input message-input"></textarea>
+          <textarea v-model="results.message" maxlength="200" required placeholder="Message"
+                    class="input message-input"></textarea>
   </label>
   <small class="message-input-count">{{ results.message.length }}/200</small>
 </template>
@@ -35,7 +27,7 @@ export default {
 <style scoped>
 .title-free {
   font-family: 'Lexend', sans-serif;
-  color: mediumseagreen;
+  color: royalblue;
   font-weight: 600;
   padding: 0 6px;
 }

@@ -9,8 +9,8 @@
       <form class="form">
         <div class="radio-inputs">
           <label>
-            <input class="radio-input" type="radio" name="engine">
-            <span class="radio-tile">
+            <input :checked="this.formType[0]" class="radio-input" type="radio" name="engine" @click="changeForm(0)">
+            <span class="radio-tile-form">
 					<span class="radio-icon">
             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd"
@@ -24,8 +24,8 @@
 				</span>
           </label>
           <label>
-            <input checked="" class="radio-input" type="radio" name="engine">
-            <span class="radio-tile">
+            <input :checked="this.formType[1]" class="radio-input" type="radio" name="engine" @click="changeForm(1)">
+            <span class="radio-tile-form">
 				<span class="radio-icon">
           <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path
@@ -36,8 +36,8 @@
 			</span>
           </label>
           <label>
-            <input class="radio-input" type="radio" name="engine">
-            <span class="radio-tile">
+            <input :checked="this.formType[2]" class="radio-input" type="radio" name="engine" @click="changeForm(2)">
+            <span class="radio-tile-form">
 					<span class="radio-icon">
             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd"
@@ -49,25 +49,15 @@
 				</span>
           </label>
         </div>
-        <p class="title">Schedule a <span class="title-free">Free</span> Consultation</p>
-        <div class="flex">
-          <label>
-            <input v-model="firstName" maxlength="30" required placeholder="First Name" type="text" class="input"/>
-          </label>
-          <label>
-            <input v-model="lastName" maxlength="50" required placeholder="Last Name" type="text" class="input"/>
-          </label>
-        </div>
-        <label>
-          <input v-model="email" maxlength="50" required placeholder="Email" type="email" class="input"/>
-        </label>
-        <label>
-          <textarea v-model="message" maxlength="200" required placeholder="Message"
-                    class="input message-input"></textarea>
-        </label>
-        <small class="message-input-count">{{ this.message.length }}/200</small>
-
-
+        <form-business v-if="this.formType[0]"
+                       :results="this.businessFormResults"
+                       @submit="submitForm(this.businessFormResults)"/>
+        <form-student v-if="this.formType[1]"
+                      :results="this.studentFormResults"
+                      @submit="submitForm(this.businessFormResults)"/>
+        <form-other v-if="this.formType[2]"
+                    :results="this.otherFormResults"
+                    @submit="submitForm(this.businessFormResults)"/>
         <button class="submit">
           Send
         </button>
@@ -77,41 +67,46 @@
         </p>
       </form>
     </div>
-    <h2 class="title-hire-student-developer">
-      <i class="fa-solid fa-angles-down" style="color: whitesmoke;"></i>
-      Why hire a Student Developer?
-      <i class="fa-solid fa-angles-down" style="color: whitesmoke;"></i>
-    </h2>
+    <svg class="title-hire-student-developer" width="75" height="75" fill="whitesmoke" viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg">
+      <path
+          d="M12.24 6a.6.6 0 0 1 .6.6V9a.6.6 0 1 1-1.2 0V6.6a.6.6 0 0 1 .6-.6Zm4.8 9.6a4.8 4.8 0 1 1-9.6 0V8.4a4.8 4.8 0 1 1 9.6 0v7.2Zm-4.8-13.2a6 6 0 0 0-6 6v7.2a6 6 0 1 0 12 0V8.4a6 6 0 0 0-6-6Z"></path>
+    </svg>
   </div>
   <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
     <path fill="royalblue" fill-opacity="1"
           d="M0,224L26.7,208C53.3,192,107,160,160,122.7C213.3,85,267,43,320,58.7C373.3,75,427,149,480,160C533.3,171,587,117,640,128C693.3,139,747,213,800,213.3C853.3,213,907,139,960,117.3C1013.3,96,1067,128,1120,149.3C1173.3,171,1227,181,1280,202.7C1333.3,224,1387,256,1413,272L1440,288L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"></path>
   </svg>
   <section class="section-why">
+    <div class="image-why-holder">
+      <img class="image-why" src="../assets/img/iphone14prorijkware.png" alt="">
+    </div>
     <div class="holder-why">
       <h3 class="title-why">7 Reasons Why You Should Choose Rijkware.</h3>
       <p class="text-why">
         Rijkware Student Developers are the smart choice for your projects. They are well-prepared, cost-effective,
         and dedicated to your success:
+        <br>
+        <br>
         <ul>
-          <li v-for="reason in this.allReasons"><span class="li-why">{{ reason["title"] }}</span>:<br> {{
-              reason["text"]
-            }}
+          <li v-for="reason in this.allReasons"><span class="li-why">{{ reason.title }}</span><br>
+            {{ reason.text }}
           </li>
         </ul>
       </p>
     </div>
-    <div class="image-why-holder">
-      <img class="image-why" src="../assets/img/iphone14prorijkware.png" alt="">
-    </div>
+
   </section>
   <section class="section-student">
     <div class="holder-student">
       <h2 class="text-student">Are you an IT Student looking for work?</h2>
       <span>Rijkware helps you find positions/projects which you can combine with your studies. </span>
-      <a class="btn-student" href="#form">Contact us</a>
+      <a class="btn-student" href="#form" @click="changeForm(1)">Sign up</a>
     </div>
   </section>
+  <div class="section-title engagement-stages">
+    <h2>Engagement Stages</h2>
+  </div>
   <section class="section-steps">
     <div class="counters-steps">
       <div class="container">
@@ -200,12 +195,12 @@
       </div>
     </div>
     <div class="holder-steps">
-      <div v-if="!this.currentStep['isOnRightSide']" v-html="this.currentStep['svg']"></div>
+      <div class="holder-steps-svg" v-if="!this.currentStep['isOnRightSide']" v-html="this.currentStep['svg']"></div>
       <div class="text-steps">
         <h3>{{ this.currentStep["title"] }}</h3>
         <p>{{ this.currentStep["text"] }}</p>
       </div>
-      <div v-if="this.currentStep['isOnRightSide']" v-html="this.currentStep['svg']"></div>
+      <div class="holder-steps-svg" v-if="this.currentStep['isOnRightSide']" v-html="this.currentStep['svg']"></div>
     </div>
 
   </section>
@@ -243,22 +238,30 @@
       <div class="card-contact card-contact-form" href="#form">
         <div>
           <i class="fa-solid fa-address-book"></i>
-          <h4>Contact us</h4>
+          <h4>Form</h4>
         </div>
-        <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">FASTEST!</strong>
+        <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">For most
+          inquiries</strong>
         <a href="#form">Use this form</a>
       </div>
       <div class="card-contact">
         <div>
           <i class="fa-solid fa-envelope"></i>
-          <h4>Email us</h4>
+          <h4>Email</h4>
         </div>
-        <a href="mailto:contact@rijkwa.re">contact@rijkwa.re</a>
+        <a href="mailto:contact@rijkwa.re" target="_blank">contact@rijkwa.re</a>
       </div>
       <div class="card-contact">
         <div>
           <i class="fa-solid fa-phone"></i>
-          <h4>Call us</h4>
+          <h4>Phone</h4>
+        </div>
+        <a href="tel:+31642068928">+31 6 420 68 928</a>
+      </div>
+      <div class="card-contact">
+        <div>
+          <i class="fa-brands fa-whatsapp"></i>
+          <h4>WhatsApp</h4>
         </div>
         <a href="tel:+31642068928">+31 6 420 68 928</a>
       </div>
@@ -272,19 +275,45 @@ import steps from "../assets/json/steps.js";
 import faqs from "../assets/json/faqs.js";
 import reasons from "@/assets/json/reasons";
 
+import FormBusiness from "@/components/forms/FormBusiness.vue";
+import StudentBusiness from "@/components/forms/FormStudent.vue";
+import OtherBusiness from "@/components/forms/FormOther.vue";
+
+
 export default {
   name: "HomePage",
+  components: {
+    'form-business': FormBusiness,
+    'form-student': StudentBusiness,
+    'form-other': OtherBusiness,
+  },
   data() {
     return {
       currentStep: {},
+      formType: [true, false, false],
       allSteps: [],
       allFaqs: [],
       allReasons: [],
-      firstName: "",
-      lastName: "",
-      email: "",
-      message: "",
-      formType: 1,
+      businessFormResults: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      },
+      studentFormResults: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        university: "",
+        study: "",
+        year: 1,
+      },
+      otherFormResults: {
+        name: "",
+        email: "",
+        message: "",
+      },
       brandIcons: [
         "fa-php",
         "fa-html5",
@@ -341,6 +370,7 @@ export default {
           translateX: [0, textWrapper.getBoundingClientRect().width + 10],
           easing: "easeOutExpo",
           duration: 700,
+          delay: 700
         })
         .add({
           targets: '.hero-text-large .letter',
@@ -348,8 +378,17 @@ export default {
           easing: "easeOutExpo",
           duration: 600,
           offset: '-=775',
-          delay: (el, i) => 34 * (i + 1)
+          delay: (el, i) => 36 * (i + 1)
+        })
+        .add({
+          targets: '.form',
+          opacity: [0, 1],
+          translateY: [10, 0],
+          easing: "easeOutExpo",
+          duration: 250,
+          // offset: '-=775',
         });
+
   },
   computed: {},
   methods: {
@@ -360,34 +399,82 @@ export default {
       }, 3000);
     },
 
-    changeForm(type) {
+    changeForm(formType) {
+      this.formType.forEach((form, index) => {
+        this.formType[index] = index === formType;
+      });
+    },
+
+    submitForm(results) {
+      console.log(results);
+
+      // Regex checks the results object for empty values
+      const regex = new RegExp(/^[a-zA-Z0-9]+$/);
+      const resultsArray = Object.values(results);
+
+      const resultsArrayFiltered = resultsArray.filter((result) => {
+        return regex.test(result);
+      });
+
+      if (resultsArrayFiltered.length !== resultsArray.length) {
+        alert('Please fill in all the fields');
+        return;
+      }
+
+
+      if (this.formType[0]) {
+        this.sendBusinessForm(results);
+      } else if (this.formType[1]) {
+        this.sendStudentForm(results);
+      } else if (this.formType[2]) {
+        this.sendOtherForm(results);
+      }
+
+    },
+
+    sendBusinessForm(results) {
+      const data = {
+        type: 'business',
+        firstName: results.firstName,
+        lastName: results.lastName,
+        email: results.email,
+        phone: results.phone,
+        message: results.message,
+      };
+
+      this.postMessage(data)
+    },
+
+
+    postMessage(data) {
+      let url = 'rijkware.nl/api/contact/';
+
+      if (data.type === 'business') {
+        url += 'business';
+      } else if (data.type === 'student') {
+        url += 'student';
+      } else {
+        url += 'other';
+      }
+
+      this.$axios.post(url, data)
+          .then((response) => {
+            console.log(response);
+            this.$router.push({name: 'success'});
+          })
+          .catch((error) => {
+            console.log(error);
+            this.$router.push({name: 'error'});
+          });
+
 
     },
 
     changeStep(step) {
-      switch (step) {
-        case 1:
-          this.currentStep = this.allSteps[0];
-          break;
-        case 2:
-          this.currentStep = this.allSteps[1];
-          break;
-        case 3:
-          this.currentStep = this.allSteps[2];
-          break;
-        case 4:
-          this.currentStep = this.allSteps[3];
-          break;
-        case 5:
-          this.currentStep = this.allSteps[4];
-          break;
-        case 6:
-          this.currentStep = this.allSteps[5];
-          break;
-      }
+      this.currentStep = this.allSteps[step-1]
     },
   }
-};
+}
 </script>
 <style scoped>
 .radio-inputs {
@@ -404,38 +491,37 @@ export default {
   margin: 6px;
 }
 
-.radio-input:checked + .radio-tile {
+.radio-input:checked + .radio-tile-form {
   border-color: #2260ff;
-//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transform: translateY(-5px);
-  color: #2260ff;
+//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transform: translateY(-5px); color: #2260ff;
 }
 
-.radio-input:checked + .radio-tile:before {
+.radio-input:checked + .radio-tile-form:before {
   transform: scale(1);
   opacity: 1;
   background-color: #2260ff;
   border-color: #2260ff;
 }
 
-.radio-input:checked + .radio-tile .radio-icon svg {
+.radio-input:checked + .radio-tile-form .radio-icon svg {
   fill: #2260ff;
 }
 
-.radio-input:checked + .radio-tile .radio-label {
+.radio-input:checked + .radio-tile-form .radio-label {
   color: #2260ff;
 }
 
-.radio-input:focus + .radio-tile {
+.radio-input:focus + .radio-tile-form {
   border-color: #2260ff;
 //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
 }
 
-.radio-input:focus + .radio-tile:before {
+.radio-input:focus + .radio-tile-form:before {
   transform: scale(1);
   opacity: 1;
 }
 
-.radio-tile {
+.radio-tile-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -445,12 +531,10 @@ export default {
   border-radius: 0.5rem;
   border: 2px solid #b5bfd9;
   background-color: #fff;
-//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transition: 0.15s ease;
-  cursor: pointer;
-  position: relative;
+//box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); transition: 0.15s ease; cursor: pointer; position: relative;
 }
 
-.radio-tile:before {
+.radio-tile-form:before {
   content: "";
   position: absolute;
   display: block;
@@ -466,11 +550,11 @@ export default {
   transition: 0.25s ease;
 }
 
-.radio-tile:hover {
+.radio-tile-form:hover {
   border-color: #2260ff;
 }
 
-.radio-tile:hover:before {
+.radio-tile-form:hover:before {
   transform: scale(1);
   opacity: 1;
 }
@@ -520,7 +604,7 @@ export default {
 }
 
 .card-contact {
-  width: 300px;
+  width: 250px;
   height: 100%;
   background-color: #fff;
   border-radius: 36px;
@@ -567,10 +651,6 @@ export default {
   font-family: 'Lexend', sans-serif;
 }
 
-.holder-steps svg {
-  color: whitesmoke;
-}
-
 .holder-steps {
   padding: 20px;
   height: 400px;
@@ -579,7 +659,7 @@ export default {
   border-radius: 36px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .section-steps {
@@ -590,7 +670,6 @@ export default {
   gap: 15px;
   width: 100vw;
   height: 550px;
-  margin-top: 36px;
 }
 
 
@@ -679,7 +758,7 @@ export default {
   width: 70vmax;
   height: 70vmax;
   position: absolute;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.17);
   left: -20vmin;
   top: -20vmin;
   animation: morph 15s linear infinite alternate, spin 20s linear infinite;
@@ -769,17 +848,15 @@ export default {
 }
 
 .text-student {
-  font-family: 'VT323', sans-serif;
-  font-size: xxx-large;
-//letter-spacing: 1px; font-weight: bold;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+//font-size: xxx-large; //letter-spacing: 1px; font-weight: bold;
 }
 
 .holder-student span {
   color: white;
   margin-bottom: 16px;
-  opacity: 0.4;
-  font-family: 'VT323', sans-serif;
-  font-size: large;
+  font-family: 'Lexend', sans-serif;
 }
 
 .btn-student {
@@ -787,9 +864,7 @@ export default {
   background-color: white;
   border: none;
   border-radius: 36px;
-  padding: 10px 20px;
-  font-family: 'VT323', sans-serif;
-  font-size: x-large;
+  padding: 20px 30px;
   font-weight: bold;
   color: royalblue;
   cursor: pointer;
@@ -923,7 +998,20 @@ li::marker {
   position: absolute;
   bottom: 0;
   margin-bottom: 40px;
-  background-color: royalblue;
+  font-size: x-large;
+  animation: upAndDown 3s ease infinite;
+}
+
+@keyframes upAndDown {
+  0% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .hero-waves {
@@ -1026,29 +1114,10 @@ button:hover p::before {
   max-width: 450px;
   background-color: #fff;
   padding: 20px;
-  border-radius: 36px;
+  border-radius: 24px;
   position: relative;
   transition: ease-in-out 100ms;
 }
-
-.title-free {
-  font-family: 'Lexend', sans-serif;
-  color: mediumseagreen;
-  font-weight: 600;
-  padding: 0 6px;
-}
-
-
-.title {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 26px;
-  color: #191919;
-  font-weight: 600;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
 
 .visit-contact-page {
   color: rgba(88, 87, 87, 0.822);
@@ -1067,51 +1136,6 @@ button:hover p::before {
   text-decoration: underline royalblue;
 }
 
-.flex {
-  display: flex;
-  width: 100%;
-  gap: 6px;
-}
-
-.form label {
-  position: relative;
-}
-
-.form label .input {
-  color: black;
-  width: 100%;
-  padding: 15px 10px 15px 12px;
-  outline: 0;
-  border: 1px solid rgba(105, 105, 105, 0.397);
-  border-radius: 10px;
-}
-
-.form label .input + span {
-  position: absolute;
-  left: 10px;
-  top: 15px;
-  color: grey;
-  font-size: 0.9em;
-  cursor: text;
-  transition: 0.3s ease;
-}
-
-.form label .input:placeholder-shown + span {
-  top: 15px;
-  font-size: 0.9em;
-}
-
-.form label .input:focus + span,
-.form label .input:valid + span {
-  top: 30px;
-  font-size: 0.7em;
-  font-weight: 600;
-}
-
-.form label .input:valid + span {
-  opacity: 0;
-}
-
 .submit {
   border: none;
   outline: none;
@@ -1125,13 +1149,6 @@ button:hover p::before {
 
 .submit:hover {
   background-color: rgb(56, 90, 194);
-}
-
-.message-input-count {
-  gap: 0;
-  display: flex;
-  justify-content: end;
-  color: gray;
 }
 
 .hero-container-form {
@@ -1167,33 +1184,154 @@ button:hover p::before {
 }
 
 @media only screen and (max-width: 768px) {
+
+  .holder-contact {
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+  }
+
+  .section-contact {
+    height: fit-content;
+  }
+
+  .card-contact {
+    height: 350px;
+    padding: 40px;
+  }
+
+  .text-why p {
+    font-size: large;
+    font-family: 'Lexend', sans-serif;
+  }
+
+  .engagement-stages {
+    margin-top: 50px;
+  }
+
+  .section-steps {
+    height: fit-content;
+  }
+
+  .text-steps {
+    width: 100%;
+  }
+
+  .holder-steps-svg {
+    display: none;
+  }
+
+  .holder-steps {
+    flex-direction: column;
+    width: 95vw;
+    height: 100%;
+  }
+
+  .radio-tile-group {
+    justify-content: space-around;
+  }
+
+  .section-steps {
+    margin-top: 10px;
+  }
+
+
+  .text-student {
+    font-size: 4rem;
+    padding: 15px;
+  }
+
+  .holder-student span {
+    font-size: 1.5rem;
+    padding: 15px;
+    margin-bottom: 60px;
+  }
+
+  .section-student {
+    height: 100vh;
+  }
+
+
+  .image-why-holder {
+    height: 50vh;
+    max-width: 400px;
+  }
+
+  .image-why {
+    width: 95vw;
+    max-width: 400px;
+    height: fit-content;
+  }
+
+  .title-why {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .title-why svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .holder-why {
+    width: 95vw;
+    height: fit-content;
+    max-width: 400px;
+
+  }
+
+  .visit-contact-page {
+    padding-top: 7px;
+    font-size: 0.6rem;
+  }
+
+  .title-hire-student-developer {
+    opacity: 0.7;
+    padding-top: 30px;
+    height: 60px;
+  }
+
+  .hero-container-form {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+
+  .radio-tile-form {
+    width: 95px;
+    height: 50px;
+  }
+
   .section-why {
     flex-direction: column;
   }
 
-  .blob {
-    display: block;
-  }
-
   .hero-waves {
-    width: 200vw;
-    margin-left: -120px;
+    width: 100vw;
+    overflow: hidden;
   }
 
   .hero-container {
-    font-size: 2.5rem;
-  }
-
-  .title {
-    font-size: 1.5rem;
+    width: auto;
+    padding: 0 8px;
   }
 
   .form {
-    width: 95vw;
+    width: 90vw;
+    height: 63vh;
+  }
+
+  .main-container {
+    justify-content: start;
   }
 
   .hero-letters {
-    font-size: 2rem;
+    font-size: 1.6rem;
+  }
+
+  .hero-text-large {
+    margin-top: 100px;
+    margin-bottom: 30px;
   }
 
   .step-container h1 {
@@ -1202,11 +1340,6 @@ button:hover p::before {
 
   .step-container p {
     font-size: 1rem;
-  }
-
-  .slider .slide-track {
-    animation: fade 20s linear infinite;
-    width: calc(150px * 14);
   }
 }
 </style>

@@ -10,9 +10,9 @@ export const faqs = [
         text: 'Our student developers are proficient in a wide range of technologies and can work on various projects, ' +
             'including web development, mobile app development, data analysis, and more. Students are also capable of ' +
             'learning new skills to fit your needs. ' +
-            '<br><br><strong>Rijkware prioritizes students academic success. ' +
+            'Rijkware prioritizes students academic success. ' +
             'Therefore, we do not accept projects that require students to work full-time (32-40 hours) unless they ' +
-            'provide a flexible schedule.</strong>',
+            'provide a flexible schedule.',
     },
     {
         summary: "Do I need to provide guidance to the Student Developer?",
