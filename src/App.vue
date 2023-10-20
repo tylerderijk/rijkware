@@ -4,7 +4,7 @@
   </router-link>
   <div class="flag-toggle" @click="toggleFlag">
     <div v-if="isEnglishFlag">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="45" height="30">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="40" height="27">
         <clipPath id="t">
           <path d="M25,15h25v15zv15h-25zh-25v-15zv-15h25z"/>
         </clipPath>
@@ -15,7 +15,7 @@
       </svg>
     </div>
     <div v-else>
-      <svg xmlns="http://www.w3.org/2000/svg" width="45" height="30" viewBox="0 0 9 6">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="27" viewBox="0 0 9 6">
         <rect fill="#21468B" width="9" height="6"/>
         <rect fill="#FFF" width="9" height="4"/>
         <rect fill="#AE1C28" width="9" height="2"/>
@@ -269,11 +269,11 @@ router-view {
 
 
 .flag-toggle {
-  position: fixed;
+  position: absolute;
   top: 20px; /* Adjust as needed */
   right: 20px; /* Adjust as needed */
   cursor: pointer;
-  z-index: 999; /* Ensure it's above other elements */
+  z-index: 0; /* Ensure it's above other elements */
 }
 
 

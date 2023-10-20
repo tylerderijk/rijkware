@@ -7,6 +7,9 @@
     </div>
     <div class="hero-container-form">
       <form class="form">
+        <div class="loader-form" ref="loader" v-if="this.sendingFormMsg">
+          <div class="spinner-form"></div>
+        </div>
         <div class="radio-inputs">
           <label>
             <input :checked="this.formType[0]" class="radio-input" type="radio" name="engine" @click="changeForm(0)">
@@ -311,6 +314,7 @@ export default {
         email: "",
         message: "",
       },
+      sendingFormMsg: false,
       brandIcons: [
         "fa-php",
         "fa-html5",
@@ -406,7 +410,6 @@ export default {
       return check;
     };
 
-// Function to handle scroll events
     function handleScroll() {
       const sections = document.querySelectorAll('.fade-in-section');
 
@@ -417,13 +420,9 @@ export default {
       });
     }
 
-// Add a scroll event listener to trigger the fade-in effect
     window.addEventListener('scroll', handleScroll);
 
-// Trigger the effect initially on page load
     handleScroll();
-
-
   },
   computed: {},
   methods: {
@@ -441,50 +440,37 @@ export default {
     },
 
     submitForm() {
-      if (this.formType[0]) {
-        if (!this.checkValues(this.businessFormResults)) {
-          alert('Please fill in all the fields');
-          return;
-        }
-      } else if (this.formType[1]) {
-        if (!this.checkValues(this.studentFormResults)) {
-          alert('Please fill in all the fields');
-          return;
-        }
-      } else if (this.formType[2]) {
-        if (!this.checkValues(this.otherFormResults)) {
-          alert('Please fill in all the fields');
-          return;
-        }
+      if (this.formType[0] && !this.checkValues(this.businessFormResults)) {
+        return;
+      } else if (this.formType[1] && !this.checkValues(this.studentFormResults)) {
+        return;
+      } else if (this.formType[2] && !this.checkValues(this.otherFormResults)) {
+        return;
       }
 
-      this.postMessage()
-
-
+      this.sendingFormMsg = true;
+      this.postMessage();
     },
+
 
     checkValues(results) {
-      const regex = new RegExp(/^[a-zA-Z0-9]+$/);
-      const resultsArray = Object.values(results);
-
-      const resultsArrayFiltered = resultsArray.filter((result) => {
-        return regex.test(result);
+      let check = true;
+      Object.keys(results).forEach((key) => {
+        if (results[key] === '') {
+          check = false;
+        }
       });
-
-      if (resultsArrayFiltered.length !== resultsArray.length) {
-        alert('Please fill in all the fields');
-        return false;
-      }
+      return check;
     },
 
-    postMessage(data) {
+    async postMessage() {
       let url = 'rijkware.nl/api/contact/';
       let msg;
 
-      if (data.type === 'business') {
+      if (this.formType[0]) {
         url += 'business';
         msg = this.businessFormResults;
-      } else if (data.type === 'student') {
+      } else if (this.formType[1]) {
         url += 'student';
         msg = this.studentFormResults;
       } else {
@@ -492,7 +478,7 @@ export default {
         msg = this.otherFormResults;
       }
 
-      fetch(url, {
+      await fetch(url, {
         method: 'POST',
         body: JSON.stringify(msg),
         headers: {
@@ -504,6 +490,7 @@ export default {
         } else {
           alert('Something went wrong, please try again later');
         }
+        this.sendingFormMsg = false;
       });
 
 
@@ -516,6 +503,39 @@ export default {
 }
 </script>
 <style scoped>
+.loader-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s;
+  border-radius: 12px;
+}
+
+.spinner-form {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #fff;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .fade-in-section {
   opacity: 0; /* Initially, sections are invisible */
   transform: translateY(20px); /* Initially, they are pushed down by 20px */
@@ -1030,9 +1050,7 @@ details > summary::-webkit-details-marker {
 }
 
 ul {
-//text-align: center; padding-top: 15px; padding-left: 0;
-  width: 100%;
-  list-style-position: inside;
+//text-align: center; padding-top: 15px; padding-left: 0; width: 100%; list-style-position: inside;
 }
 
 li::marker {
