@@ -11,7 +11,6 @@ const router = createRouter({
             component: Index,
             children: [
                 { path: '', component: Index },
-                // { path: 'about', component: WhoIsThisGuy },
                 { path: '/:pathMatch(.*)*', redirect: '/' },
             ]
         },

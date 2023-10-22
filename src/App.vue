@@ -2,7 +2,7 @@
   <router-link to="/" class="rijkware_logo_wrapper">
     <img src="./assets/img/RijkwareLogo20231014.png" alt="Rijkware" class="rijkware_logo">
   </router-link>
-  <div class="flag-toggle" @click="toggleFlag">
+  <div class="flag-toggle" @click="toggleLanguage()">
     <div v-if="isEnglishFlag">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="40" height="27">
         <clipPath id="t">
@@ -23,7 +23,7 @@
     </div>
   </div>
   <main>
-    <router-view/>
+    <router-view :currentLang="this.currentLanguage"/>
     <div class="cloud-holder">
       <img src="./assets/img/clouds/cloud-one.png" alt="clouds" class="cloud-one cloud">
       <img src="./assets/img/clouds/cloud-two.png" alt="clouds" class="cloud-two cloud">
@@ -50,20 +50,27 @@
 </template>
 <script>
 import anime from 'animejs';
+import lang_en from "@/assets/json/lang_en";
 
 export default {
   name: "Index",
   data() {
     return {
+      currentLanguage: {},
       showLoaderScreen: true,
       disableScroll: true,
       isEnglishFlag: true,
     }
   },
   watch: {
-    '$route'() {
-
-    }
+    //  $route (to, from) {
+    //    if (to.fullPath === "/") {
+    //      this.$router.push("/en"); // Push the "/en" route when the user enters the website
+    //    }
+    // }
+  },
+  beforeCreate() {
+    this.currentLanguage = lang_en;
   },
   beforeUpdate() {
   },
@@ -162,8 +169,12 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
-    toggleFlag() {
+    toggleLanguage() {
       this.isEnglishFlag = !this.isEnglishFlag;
+
+      if (this.isEnglishFlag) {
+        this.lang
+      }
     },
     getRandomInt(max) {
       return Math.floor(Math.random() * max);
