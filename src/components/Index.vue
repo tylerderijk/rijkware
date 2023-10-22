@@ -61,7 +61,8 @@
         <form-other v-if="this.formType[2]"
                     :results="this.otherFormResults"
                     :currentLang="this.currentLang"/>
-        <button class="submit" @click="this.submitForm()">
+        <div class="h-captcha" data-captcha="true"></div>
+        <button class="submit" @click.prevent="submitForm($event)">
           {{ currentLang.submit }}
         </button>
         <p class="visit-contact-page">
@@ -277,6 +278,7 @@
 </template>
 
 <script>
+
 import anime from 'animejs';
 
 import FormBusiness from "@/components/forms/FormBusiness.vue";
@@ -302,24 +304,30 @@ export default {
       allFaqs: [],
       allReasons: [],
       businessFormResults: {
+        type: "Business Form Submission",
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
         message: "",
+        access_key: ""
       },
       studentFormResults: {
+        type: "Student Form Submission",
         firstName: "",
         lastName: "",
         email: "",
         university: "",
         study: "",
         year: 1,
+        access_key: ""
       },
       otherFormResults: {
+        type: "Other Form Submission",
         name: "",
         email: "",
         message: "",
+        access_key: ""
       },
       sendingFormMsg: false,
       brandIcons: [
@@ -395,7 +403,6 @@ export default {
           translateY: [10, 0],
           easing: "easeOutExpo",
           duration: 250,
-          // offset: '-=775',
         });
 
 
@@ -447,44 +454,42 @@ export default {
       });
     },
 
-    submitForm() {
+    async submitForm() {
       if (this.formType[0] && !this.checkValues(this.businessFormResults)) {
+        alert('Please fill in all the fields');
         return;
       } else if (this.formType[1] && !this.checkValues(this.studentFormResults)) {
+        alert('Please fill in all the fields');
         return;
       } else if (this.formType[2] && !this.checkValues(this.otherFormResults)) {
+        alert('Please fill in all the fields');
         return;
       }
-
       this.sendingFormMsg = true;
-      this.postMessage();
+
+      await this.postMessage();
     },
 
 
     checkValues(results) {
-      let check = true;
-      Object.keys(results).forEach((key) => {
-        if (results[key] === '') {
-          check = false;
-        }
-      });
-      return check;
+      return Object.keys(results).every(key => key === 'access_key' || results[key] !== '');
     },
 
+
     async postMessage() {
-      let url = 'rijkware.nl/api/contact/';
       let msg;
 
       if (this.formType[0]) {
-        url += 'business';
         msg = this.businessFormResults;
       } else if (this.formType[1]) {
-        url += 'student';
         msg = this.studentFormResults;
       } else {
-        url += 'other';
         msg = this.otherFormResults;
       }
+
+
+      let url = process.env.VUE_APP_EMAIL_ENDPOINT;
+      msg.access_key = process.env.VUE_APP_EMAIL_ENDPOINT_ACCESS_KEY;
 
       await fetch(url, {
         method: 'POST',
@@ -494,19 +499,42 @@ export default {
         },
       }).then((response) => {
         if (response.status === 200) {
-          alert('Message sent!');
+          alert('Message sent, thank you for contacting us!');
         } else {
           alert('Something went wrong, please try again later');
         }
         this.sendingFormMsg = false;
+        this.clearFormFields();
       });
-
-
     },
-
-    changeStep(step) {
-      this.currentStep = this.allSteps[step - 1]
-    },
+    clearFormFields() {
+      this.businessFormResults = {
+        type: "Business Form Submission",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+        access_key: ""
+      };
+      this.studentFormResults = {
+        type: "Student Form Submission",
+        firstName: "",
+        lastName: "",
+        email: "",
+        university: "",
+        study: "",
+        year: 1,
+        access_key: ""
+      };
+      this.otherFormResults = {
+        type: "Other Form Submission",
+        name: "",
+        email: "",
+        message: "",
+        access_key: ""
+      };
+    }
   }
 }
 </script>
@@ -1275,6 +1303,7 @@ button:hover p::before {
 }
 
 @media only screen and (max-width: 768px) {
+
   .card-contact strong {
     padding-top: 40px;
     font-size: 12px;
@@ -1404,9 +1433,10 @@ button:hover p::before {
   }
 
   .title-hire-student-developer {
+    display: none;
     opacity: 0.7;
-    padding-top: 30px;
-    height: 60px;
+    padding-top: 10px;
+  //height: 20px;
   }
 
   .hero-container-form {
@@ -1436,8 +1466,9 @@ button:hover p::before {
   }
 
   .form {
+    padding: 8px;
     width: 90vw;
-    height: 63vh;
+    height: 72vh;
   }
 
   .main-container {
@@ -1449,8 +1480,8 @@ button:hover p::before {
   }
 
   .hero-text-large {
-    margin-top: 100px;
-    margin-bottom: 30px;
+    margin-top: 90px;
+    margin-bottom: 15px;
   }
 
   .step-container h1 {
