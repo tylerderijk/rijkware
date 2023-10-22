@@ -70,11 +70,11 @@ export default {
     // }
   },
   beforeCreate() {
-    this.currentLanguage = lang_en;
   },
   beforeUpdate() {
   },
   mounted() {
+    this.currentLanguage = lang_en;
     this.showLoader();
 
     setTimeout(() => {

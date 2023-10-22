@@ -2,7 +2,7 @@
   <div class="main-container" id="form">
     <div class="hero-container">
       <h1 class="hero-text-large">
-        <span class="hero-letters">{{ currentLanguage.heroLetters }}</span>
+        <span class="hero-letters">{{ currentLang.heroLetters }}</span>
       </h1>
     </div>
     <div class="hero-container-form">
@@ -23,7 +23,7 @@
       d="M2.4 16.43v2.77a2.4 2.4 0 0 0 2.4 2.4h14.4a2.4 2.4 0 0 0 2.4-2.4v-2.77A29.97 29.97 0 0 1 12 18c-3.355 0-6.584-.552-9.6-1.57Z"></path>
 </svg>
 					</span>
-					<span class="radio-label">{{ currentLanguage.business }}</span>
+					<span class="radio-label">{{ currentLang.business }}</span>
 				</span>
           </label>
           <label>
@@ -35,7 +35,7 @@
       d="M12.473 2.496a1.2 1.2 0 0 0-.946 0l-8.4 3.6a1.2 1.2 0 0 0 0 2.208L6.3 9.661c.118-.133.264-.238.427-.308l4.8-2.057a1.2 1.2 0 1 1 .946 2.206L9.2 10.906l2.328.997a1.2 1.2 0 0 0 .945 0l8.4-3.6a1.2 1.2 0 0 0 0-2.206l-8.4-3.6v-.001Zm-8.501 8.78L6 12.144v4.922a10.76 10.76 0 0 0-1.26-.208 1.2 1.2 0 0 1-1.068-1.068 13.338 13.338 0 0 1 .3-4.515v.001Zm7.188 8.612a10.831 10.831 0 0 0-2.76-1.966v-4.748l2.182.936a3.6 3.6 0 0 0 2.836 0l6.61-2.834c.358 1.477.46 3.004.3 4.515a1.2 1.2 0 0 1-1.068 1.068 10.76 10.76 0 0 0-6.42 3.029 1.2 1.2 0 0 1-1.68 0ZM7.2 21.6a1.2 1.2 0 0 0 1.2-1.2v-2.478a10.72 10.72 0 0 0-2.4-.854V20.4a1.2 1.2 0 0 0 1.2 1.2Z"></path>
 </svg>
 				</span>
-				<span class="radio-label">{{ currentLanguage.student }}</span>
+				<span class="radio-label">{{ currentLang.student }}</span>
 			</span>
           </label>
           <label>
@@ -48,7 +48,7 @@
         clip-rule="evenodd"></path>
 </svg>
 					</span>
-					<span class="radio-label">{{ currentLanguage.other }}</span>
+					<span class="radio-label">{{ currentLang.other }}</span>
 				</span>
           </label>
         </div>
@@ -62,11 +62,11 @@
                     :results="this.otherFormResults"
                     @submit="submitForm(this.businessFormResults)"/>
         <button class="submit" @click="this.submitForm()">
-          {{ currentLanguage.submit }}
+          {{ currentLang.submit }}
         </button>
         <p class="visit-contact-page">
-          {{ currentLanguage.otherOptionsAvailableAtThe }}<a href="#contactService" style="text-underline-offset: 4px;">
-          {{ currentLanguage.contactAndServices }}</a> {{ currentLanguage.section }}
+          {{ currentLang.otherOptionsAvailableAtThe }}<a href="#contactService" style="text-underline-offset: 4px;">
+          {{ currentLang.contactAndServices }}</a> {{ currentLang.section }}
         </p>
       </form>
     </div>
@@ -87,7 +87,7 @@
     <div class="reason-section">
 
       <div class="holder-why">
-        <h3 class="title-why">{{ currentLanguage.sevenReasonsWhyYouShouldChooseRijkware }}</h3>
+        <h3 class="title-why">{{ currentLang.sevenReasonsWhyYouShouldChooseRijkware }}</h3>
       </div>
       <ul>
         <li class="reason-why" v-for="reason in this.allReasons"><span class="li-why">{{ reason.title }}</span><br>
@@ -99,13 +99,13 @@
   </section>
   <section class="section-student">
     <div class="holder-student">
-      <h2 class="text-student">{{ currentLanguage.areYouAnITStudentLookingForWork }}</h2>
-      <span>{{ currentLanguage.rijkwareHelpsYouFindPositionsProjectsWhichYouCanCombineWithYourStudies }}</span>
-      <a class="btn-student" href="#form" @click="changeForm(1)">{{ currentLanguage.signUp }}</a>
+      <h2 class="text-student">{{ currentLang.areYouAnITStudentLookingForWork }}</h2>
+      <span>{{ currentLang.rijkwareHelpsYouFindPositionsProjectsWhichYouCanCombineWithYourStudies }}</span>
+      <a class="btn-student" href="#form" @click="changeForm(1)">{{ currentLang.signUp }}</a>
     </div>
   </section>
   <div class="section-title engagement-stages">
-    <h2>{{ currentLanguage.engagementStages }}</h2>
+    <h2>{{ currentLang.engagementStages }}</h2>
   </div>
   <section class="section-steps">
     <div class="counters-steps">
@@ -207,7 +207,7 @@
 
 
   <div class="section-title">
-    <h2>{{ currentLanguage.frequentlyAskedQuestions }}</h2>
+    <h2>{{ currentLang.frequentlyAskedQuestions }}</h2>
   </div>
   <section class="section-qna">
     <details class="holder-qna" v-for="faq in this.allFaqs">
@@ -231,36 +231,36 @@
 
 
   <div class="section-title" id="contactService">
-    <h2>{{ currentLanguage.contactAndServices }}</h2>
+    <h2>{{ currentLang.contactAndServices }}</h2>
   </div>
   <section class="section-contact">
     <div class="holder-contact">
       <div class="card-contact card-contact-form" href="#form">
         <div>
           <i class="fa-solid fa-address-book"></i>
-          <h4>{{ currentLanguage.form }}</h4>
+          <h4>{{ currentLang.form }}</h4>
         </div>
-        <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">{{ currentLanguage.forMostInquiries }}</strong>
-        <a href="#form">{{ currentLanguage.useThisForm }}</a>
+        <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">{{ currentLang.forMostInquiries }}</strong>
+        <a href="#form">{{ currentLang.useThisForm }}</a>
       </div>
       <div class="card-contact">
         <div>
           <i class="fa-solid fa-envelope"></i>
-          <h4>{{ currentLanguage.email }}</h4>
+          <h4>{{ currentLang.email }}</h4>
         </div>
         <a href="mailto:contact@rijkwa.re" target="_blank">contact@rijkwa.re</a>
       </div>
       <div class="card-contact">
         <div>
           <i class="fa-solid fa-phone"></i>
-          <h4>{{ currentLanguage.phone }}</h4>
+          <h4>{{ currentLang.phone }}</h4>
         </div>
         <a href="tel:+31642068928">+31 6 420 68 928</a>
       </div>
       <div class="card-contact">
         <div>
           <i class="fa-brands fa-whatsapp"></i>
-          <h4>{{ currentLanguage.whatsApp }}</h4>
+          <h4>{{ currentLang.whatsApp }}</h4>
         </div>
         <a href="tel:+31642068928">+31 6 420 68 928</a>
       </div>
@@ -292,7 +292,6 @@ export default {
   ],
   data() {
     return {
-      currentLanguage: {},
       currentStep: {},
       formType: [true, false, false],
       allSteps: [],
@@ -355,8 +354,6 @@ export default {
     reasons.forEach((reason) => {
       this.allReasons.push(reason);
     });
-
-    this.currentLanguage = currentLang;
 
     this.startBrandAnimation();
   },
