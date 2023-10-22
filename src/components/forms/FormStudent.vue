@@ -1,10 +1,11 @@
 <script>
 export default {
   name: "FormStudent",
-  props: [
-    'results'
-  ],
-  emits: ['submit'],
+  props: {
+    results: Object,
+    currentLang: Object
+  },
+  // emits: ['submit'],
   methods: {
     addRemoveYear(year) {
       if (year < 1 || year > 10) {
@@ -18,27 +19,27 @@ export default {
 </script>
 
 <template>
-  <p class="title">Work as  <span class="title-free">Student Developer</span></p>
+  <p class="title">{{ currentLang.workAs }} <span class="title-free">{{ currentLang.studentDeveloper }}</span></p>
   <div class="flex">
     <label>
-      <input v-model="results.firstName" maxlength="30" required placeholder="First Name" type="text" class="input"/>
+      <input v-model="results.firstName" maxlength="30" required :placeholder="currentLang.firstName" type="text" class="input"/>
     </label>
     <label>
-      <input v-model="results.lastName" maxlength="50" required placeholder="Last Name" type="text" class="input"/>
+      <input v-model="results.lastName" maxlength="50" required :placeholder="currentLang.lastName" type="text" class="input"/>
     </label>
   </div>
   <label>
-    <input v-model="results.email" maxlength="50" required placeholder="Email" type="email" class="input"/>
+    <input v-model="results.email" maxlength="50" required :placeholder="currentLang.email" type="email" class="input"/>
   </label>
   <label>
-    <input v-model="results.university" maxlength="50" required placeholder="University" type="text" class="input"/>
+    <input v-model="results.university" maxlength="50" required :placeholder="currentLang.university" type="text" class="input"/>
   </label>
   <label>
-    <input v-model="results.study" maxlength="50" required placeholder="Study" type="text" class="input"/>
+    <input v-model="results.study" maxlength="50" required :placeholder="currentLang.study" type="text" class="input"/>
   </label>
   <div class="university-year">
 
-    <label>Current University Year</label>
+    <label>{{ currentLang.currentUniversityYear }}</label>
   <div class="quantity">
     <button @click="addRemoveYear(results.year-1)">
       <svg fill="none" viewBox="0 0 24 24" height="14" width="14" xmlns="http://www.w3.org/2000/svg">

@@ -1,24 +1,25 @@
 <script>
 export default {
   name: "FormOther",
-  props: [
-    'results'
-  ],
-  emits: ['submit']
+  props: {
+    results: Object,
+    currentLang: Object
+  },
+  // emits: ['submit']
 }
 
 </script>
 
 <template>
-  <p class="title">Learn more about <span class="title-free">Rijkware</span></p>
+  <p class="title">{{ currentLang.learnMoreAbout }} <span class="title-free">{{ currentLang.rijkware }}</span></p>
     <label>
-      <input v-model="results.name" maxlength="30" required placeholder="Name" type="text" class="input"/>
+      <input v-model="results.name" maxlength="30" required :placeholder="currentLang.firstName" type="text" class="input"/>
     </label>
   <label>
-    <input v-model="results.email" maxlength="50" required placeholder="Email" type="email" class="input"/>
+    <input v-model="results.email" maxlength="50" required :placeholder="currentLang.email" type="email" class="input"/>
   </label>
   <label>
-          <textarea v-model="results.message" maxlength="200" required placeholder="Message"
+          <textarea v-model="results.message" maxlength="200" required :placeholder="currentLang.message"
                     class="input message-input"></textarea>
   </label>
   <small class="message-input-count">{{ results.message.length }}/200</small>

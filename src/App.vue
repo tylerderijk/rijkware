@@ -4,6 +4,7 @@
   </router-link>
   <div class="flag-toggle" @click="toggleLanguage()">
     <div v-if="isEnglishFlag">
+      <small class="language-switch">Current language:</small>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="40" height="27">
         <clipPath id="t">
           <path d="M25,15h25v15zv15h-25zh-25v-15zv-15h25z"/>
@@ -15,6 +16,7 @@
       </svg>
     </div>
     <div v-else>
+      <small class="language-switch">Huidige taal:</small>
       <svg xmlns="http://www.w3.org/2000/svg" width="40" height="27" viewBox="0 0 9 6">
         <rect fill="#21468B" width="9" height="6"/>
         <rect fill="#FFF" width="9" height="4"/>
@@ -51,6 +53,7 @@
 <script>
 import anime from 'animejs';
 import lang_en from "@/assets/json/lang_en";
+import lang_nl from "@/assets/json/lang_nl";
 
 export default {
   name: "Index",
@@ -173,7 +176,9 @@ export default {
       this.isEnglishFlag = !this.isEnglishFlag;
 
       if (this.isEnglishFlag) {
-        this.lang
+        this.currentLanguage = lang_en;
+      } else {
+        this.currentLanguage = lang_nl;
       }
     },
     getRandomInt(max) {
@@ -271,7 +276,9 @@ footer p {
 
 .rijkware_logo_footer {
   text-align: center;
-//height: 120px; width: 400px; padding: 20px; opacity: 0.8;
+  width: 400px;
+  opacity: 0.6;
+  padding: 20px;
 }
 
 router-view {
@@ -335,6 +342,11 @@ main {
   opacity: 0;
 }
 
+.language-switch {
+  padding-right: 8px;
+  color: whitesmoke;
+}
+
 
 ::-moz-selection { /* Code for Firefox */
   color: white;
@@ -353,7 +365,16 @@ main {
 
 @media only screen and (max-width: 768px) {
   .rijkware_logo_footer {
-    width: 90%;
+    //width: 90%;
+    width: 100px;
+  }
+
+  .language-switch {
+    display: none;
+  }
+
+  .footer p {
+    width: 100px;
   }
 
   footer {

@@ -1,29 +1,30 @@
 <script>
 export default {
   name: "FormBusiness",
-  props: [
-      'results'
-  ],
-  emits: ['submit']
+  props: {
+    results: Object,
+    currentLang: Object
+  },
+  // emits: ['submit']
 }
 
 </script>
 
 <template>
-  <p class="title">Request a <span class="title-free">Free Consultation</span></p>
+  <p class="title">{{ currentLang.requestA }} <span class="title-free">{{ currentLang.consultation }}</span></p>
   <div class="flex">
     <label>
-      <input v-model="results.firstName" maxlength="30" required placeholder="First Name" type="text" class="input"/>
+      <input v-model="results.firstName" maxlength="30" required :placeholder="currentLang.firstName" type="text" class="input"/>
     </label>
     <label>
-      <input v-model="results.lastName" maxlength="50" required placeholder="Last Name" type="text" class="input"/>
+      <input v-model="results.lastName" maxlength="50" required :placeholder="currentLang.lastName" type="text" class="input"/>
     </label>
   </div>
   <label>
-    <input v-model="results.email" maxlength="50" required placeholder="Email" type="email" class="input"/>
+    <input v-model="results.email" maxlength="50" required :placeholder="currentLang.email" type="email" class="input"/>
   </label>
   <label>
-    <input v-model="results.phone" maxlength="50" required placeholder="Phone" type="text" class="input"/>
+    <input v-model="results.phone" maxlength="50" required :placeholder="currentLang.phone" type="text" class="input"/>
   </label>
   <label>
     <textarea v-model="results.message" maxlength="200" required placeholder="Message"

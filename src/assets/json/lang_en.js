@@ -17,7 +17,7 @@ export const lang_en =
         form: "Form",
         forMostInquiries: "For most inquiries",
         useThisForm: "Use this form",
-        email: "Email",
+        email: "E-mail",
         phone: "Phone",
         whatsApp: "WhatsApp",
             faqs: [
@@ -175,7 +175,19 @@ export const lang_en =
                                 '                        clip-rule="evenodd"></path>\n' +
                                 '                </svg>'
                     }
-            ]
+            ],
+            requestA: "Request a",
+            workAs: "Work as",
+            studentDeveloper: "Student Developer",
+            learnMoreAbout: "Learn more about",
+            rijkware: "Rijkware",
+            consultation: "Free Consultation",
+            firstName: "First Name",
+            lastName: "Last Name",
+            university: "University",
+            study: "Study",
+            currentUniversityYear: "Current University Year",
+            message: "Message",
     }
 ;
 

@@ -54,18 +54,18 @@
         </div>
         <form-business v-if="this.formType[0]"
                        :results="this.businessFormResults"
-                       @submit="submitForm(this.businessFormResults)"/>
+                       :currentLang="this.currentLang"/>
         <form-student v-if="this.formType[1]"
                       :results="this.studentFormResults"
-                      @submit="submitForm(this.businessFormResults)"/>
+                      :currentLang="this.currentLang"/>
         <form-other v-if="this.formType[2]"
                     :results="this.otherFormResults"
-                    @submit="submitForm(this.businessFormResults)"/>
+                    :currentLang="this.currentLang"/>
         <button class="submit" @click="this.submitForm()">
           {{ currentLang.submit }}
         </button>
         <p class="visit-contact-page">
-          {{ currentLang.otherOptionsAvailableAtThe }}<a href="#contactService" style="text-underline-offset: 4px;">
+          {{ currentLang.otherOptionsAvailableAtThe }} <a href="#contactService" style="text-underline-offset: 4px;">
           {{ currentLang.contactAndServices }}</a> {{ currentLang.section }}
         </p>
       </form>
@@ -90,7 +90,7 @@
         <h3 class="title-why">{{ currentLang.sevenReasonsWhyYouShouldChooseRijkware }}</h3>
       </div>
       <ul>
-        <li class="reason-why" v-for="reason in this.allReasons"><span class="li-why">{{ reason.title }}</span><br>
+        <li class="reason-why" v-for="reason in currentLang.reasons"><span class="li-why">{{ reason.title }}</span><br>
           {{ reason.text }}
         </li>
       </ul>
@@ -112,7 +112,8 @@
       <div class="container">
         <div class="radio-tile-group">
           <div class="input-container">
-            <input checked id="step-one" class="radio-button" type="radio" name="radio" @click="changeStep(1)">
+            <input checked id="step-one" class="radio-button" type="radio" name="radio"
+                   @click="this.currentStep = currentLang.steps[0]">
             <div class="radio-tile">
               <div class="icon step-one-icon">
                 <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +128,8 @@
           </div>
 
           <div class="input-container">
-            <input id="step-two" class="radio-button" type="radio" name="radio" @click="changeStep(2)">
+            <input id="step-two" class="radio-button" type="radio" name="radio"
+                   @click="this.currentStep = currentLang.steps[1]">
             <div class="radio-tile">
               <div class="icon step-two-icon">
                 <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -140,7 +142,8 @@
             </div>
           </div>
           <div class="input-container">
-            <input id="step-three" class="radio-button" type="radio" name="radio" @click="changeStep(3)">
+            <input id="step-three" class="radio-button" type="radio" name="radio"
+                   @click="this.currentStep = currentLang.steps[2]">
             <div class="radio-tile">
               <div class="icon step-three-icon">
                 <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -153,7 +156,8 @@
             </div>
           </div>
           <div class="input-container">
-            <input id="step-four" class="radio-button" type="radio" name="radio" @click="changeStep(4)">
+            <input id="step-four" class="radio-button" type="radio" name="radio"
+                   @click="this.currentStep = currentLang.steps[3]">
             <div class="radio-tile">
               <div class="icon step-four-icon">
                 <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -167,7 +171,8 @@
             </div>
           </div>
           <div class="input-container">
-            <input id="step-five" class="radio-button" type="radio" name="radio" @click="changeStep(5)">
+            <input id="step-five" class="radio-button" type="radio" name="radio"
+                   @click="this.currentStep = currentLang.steps[4]">
             <div class="radio-tile">
               <div class="icon step-five-icon">
                 <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -179,7 +184,8 @@
             </div>
           </div>
           <div class="input-container">
-            <input id="step-six" class="radio-button" type="radio" name="radio" @click="changeStep(6)">
+            <input id="step-six" class="radio-button" type="radio" name="radio"
+                   @click="this.currentStep = currentLang.steps[5]">
             <div class="radio-tile">
               <div class="icon step-six-icon">
                 <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -210,7 +216,7 @@
     <h2>{{ currentLang.frequentlyAskedQuestions }}</h2>
   </div>
   <section class="section-qna">
-    <details class="holder-qna" v-for="faq in this.allFaqs">
+    <details class="holder-qna" v-for="faq in currentLang.faqs">
       <summary>
         <h3 class="title-faq-why">
           <svg width="28" height="28" fill="royalblue" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -240,7 +246,9 @@
           <i class="fa-solid fa-address-book"></i>
           <h4>{{ currentLang.form }}</h4>
         </div>
-        <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">{{ currentLang.forMostInquiries }}</strong>
+        <strong style="position: absolute; color: royalblue; opacity: 0.4; margin-top: 16px;">{{
+            currentLang.forMostInquiries
+          }}</strong>
         <a href="#form">{{ currentLang.useThisForm }}</a>
       </div>
       <div class="card-contact">
@@ -248,7 +256,7 @@
           <i class="fa-solid fa-envelope"></i>
           <h4>{{ currentLang.email }}</h4>
         </div>
-        <a href="mailto:contact@rijkwa.re" target="_blank">contact@rijkwa.re</a>
+        <a href="mailto:contact@rijkwa.re" target="_blank">contact@rijkware.nl</a>
       </div>
       <div class="card-contact">
         <div>
@@ -271,10 +279,6 @@
 <script>
 import anime from 'animejs';
 
-import steps from "../assets/json/steps.js";
-import faqs from "../assets/json/faqs.js";
-import reasons from "@/assets/json/reasons";
-
 import FormBusiness from "@/components/forms/FormBusiness.vue";
 import StudentBusiness from "@/components/forms/FormStudent.vue";
 import OtherBusiness from "@/components/forms/FormOther.vue";
@@ -287,9 +291,9 @@ export default {
     'form-student': StudentBusiness,
     'form-other': OtherBusiness,
   },
-  props: [
-    'currentLang'
-  ],
+  props: {
+    currentLang: Object
+  },
   data() {
     return {
       currentStep: {},
@@ -340,20 +344,21 @@ export default {
   watch: {
     '$route'() {
     },
+    currentLang() {
+      this.allSteps = [];
+      this.currentLang.steps.forEach((step) => {
+        this.allSteps.push(step);
+      });
+      this.currentStep = this.allSteps[0];
+    }
   },
   created() {
-    steps.forEach((step) => {
+    let currentLang = this.currentLang;
+
+    currentLang.steps.forEach((step) => {
       this.allSteps.push(step);
     });
     this.currentStep = this.allSteps[0];
-
-    faqs.forEach((faq) => {
-      this.allFaqs.push(faq);
-    });
-
-    reasons.forEach((reason) => {
-      this.allReasons.push(reason);
-    });
 
     this.startBrandAnimation();
   },
@@ -1016,7 +1021,6 @@ details > summary::-webkit-details-marker {
 .holder-why {
   display: flex;
   flex-direction: column;
-  width: 700px;
   max-width: 1250px;
   gap: 20px;
   padding: 20px 20px 0 20px;
@@ -1157,6 +1161,9 @@ section {
   z-index: 10;
 }
 
+.engagement-stages {
+  text-align: center;
+}
 
 button {
   --primary-color: rgba(255, 255, 255, 0.5);
@@ -1355,6 +1362,7 @@ button:hover p::before {
 
   .section-student {
     height: 100vh;
+    margin-top: 100px;
   }
 
 
@@ -1385,6 +1393,7 @@ button:hover p::before {
   }
 
   .holder-why {
+    margin-top: 50px;
     width: 95vw;
     height: fit-content;
   }
